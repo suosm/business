@@ -22,7 +22,7 @@ se;}
 		      // Invia i dati a osm 
 		      $.ajax({
 			type: "POST",
-     	                url: "https://api.openstreetmap.org/api/0.6/notes",
+     	                url: "http://api.openstreetmap.org/api/0.6/notes",
 			data: "lat=" + lat  + "&lon=" + lon +"&text="+testo,
 			dataType: "html",
 			success: function(msg)
