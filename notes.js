@@ -12,7 +12,8 @@ $( document ).ready(function(){
 se;}
 		      
 		      //Creazione testo da inserire nella nota
-		      var testo="addr:street="+$("#strada").val()
+		      var testo="IlMioIndirizzo\n"
+		        +"addr:street="+$("#strada").val()
 			+"\naddr:housenumber="+$("#civico").val()
 			+"\naddr:city="+$("#comune").val()
 			+"\naddr:postcode="+$("#cap").val()
@@ -21,8 +22,8 @@ se;}
 		      // Invia i dati a osm 
 		      $.ajax({
 			type: "POST",
-     	// url: "https://api.openstreetmap.org/api/0.6/notes",  sandbox follow
-			url: "https://api06.dev.openstreetmap.org/api/notes",     
+     	                url: "https://api.openstreetmap.org/api/0.6/notes"
+			//url: "https://api06.dev.openstreetmap.org/api/notes",     sandbox
 			data: "lat=" + lat  + "&lon=" + lon +"&text="+testo,
 			dataType: "html",
 			success: function(msg)
