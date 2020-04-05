@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title>Segnala un indirizzo</title>
+  <link rel="stylesheet" href="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.css">
+
+<!-- Extra Codiqa features -->
+  <link rel="stylesheet" href="codiqa.ext.css">
+
+<!-- jQuery and jQuery Mobile -->
+  <script src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js"></script>
+  <script src="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+
+<!-- Extra Codiqa features -->
+  <script src="https://d10ajoocuyu32n.cloudfront.net/codiqa.ext.js"></script>
+  <script src="geo.js"></script>
+  <script src="notes.js"></script>  
+  </script>  
+</head>
+
+<body>
+<!-- Home -->
+<div data-role="page" id="page1">
+    <div data-theme="a" data-role="header">
+        <h2>
+            Segnala un indirizzo
+        </h2>
+</div>
+
+<div data-role="content">
+        <form id="form">
+
+
+            
+            <div data-role="fieldcontain">
+                <label for="Nome della strada">
+                    Nome della strada
+                </label>
+                <input name="strada" id="strada" placeholder="p.es: Via Giuseppe Garibaldi" value="" data-mini="true"
+                type="text">
+            </div>
+            <div data-role="fieldcontain">
+                <label for="numero civico">
+                    Numero civico 
+                </label>
+                <input name="civico" id="civico" placeholder="p.es: 11a" value="" data-mini="true" type="text">
+            </div>
+            <div data-role="fieldcontain">
+                <label for="comune">
+                    Comune di (opzionale) 
+                </label>
+                <input name="comune" id="comune" placeholder="Castiglione delle Stiviere" value="" data-mini="true" type="text">
+            </div>
+            <div data-role="fieldcontain">
+                <label for="CAP">
+                    Codice di avviamento postale (opzionale)
+                </label>
+                <input name="civico" id="civico" placeholder="46043" value="" data-mini="true" type="number">
+            </div>
+            
+
+
+
+            <div data-role="fieldcontain">
+                <label for="note">
+                    Note (opzionale)
+                </label>
+                <textarea name="note" id="note" placeholder="qualche altro dettaglio..."></textarea>
+            </div>
+            <div id="geo">
+            </div>
+            <input data-theme="a" value="Invia" type="submit">
+        </form>
+    </div>
+</div>
+</body>
+</html>
