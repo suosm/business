@@ -11,7 +11,7 @@ $( document ).ready(function(){
 		      
 		      //Creazione testo da inserire nella nota
 		      var testo="AggiuntoCivico"
-		        +"addr:street="+$("#strada").val()
+		        +"\naddr:street="+$("#strada").val()
 			+"\naddr:housenumber="+$("#civico").val()
 			+"\naddr:city="+$("#comune").val()
 			+"\naddr:postcode="+$("#cap").val()
