@@ -18,9 +18,10 @@ $( document ).ready(function(){
 			+"\ndescription="+$("#note").val();
 		      
 		      // Invia i dati a osm 
+		      // https://api.openstreetmap.org/api/0.6/notes?lat=51.00&lon=0.1&text=ThisIsANote		      
 		      $.ajax({
 			type: "POST",
-     	                url: "http://api.openstreetmap.org/api/0.6/notes",
+     	                url: "https://api.openstreetmap.org/api/0.6/notes?",
 			data: "lat=" + lat  + "&lon=" + lon +"&text="+testo,
 			dataType: "html",
 			success: function(msg)
