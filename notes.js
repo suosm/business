@@ -10,7 +10,7 @@ $( document ).ready(function(){
 		      if($("#civico").val()=="") {alert("Il Campo numero civico non può essere vuoto");return false;}
 		      
 		      //Creazione testo da inserire nella nota
-		      var testo="AggiuntoCivico"
+		      var testo="AggiuntoIndirizzo"
 		        +"\naddr:street="+$("#strada").val()
 			+"\naddr:housenumber="+$("#civico").val()
 			+"\naddr:city="+$("#comune").val()
