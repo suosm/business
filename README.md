@@ -14,4 +14,4 @@ Indirizzo preset is for reporting addresses recording the following fields:
 
 ## Usage
 
-After note is sent, you can catch it at [NotesReview](https://ent8r.github.io/NotesReview/) filtering for "AggiuntoIndirizzo". Selecting note, just copy and paste OSM ready tags in suggested editors.
+After note is sent, you can catch it at [NotesReview](https://ent8r.github.io/NotesReview/) filtering for "AggiuntoIndirizzo". Selecting note, just copy and paste OSM-ready tags in suggested editors.
