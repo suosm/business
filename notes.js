@@ -1,4 +1,4 @@
-function(){
+function sendNote(){
   $('#form').submit(function(event){
     event.preventDefault();
     // non permette di inviare i dati se l'accuratezza supera i 35m
@@ -33,7 +33,7 @@ function(){
         $("#sending-information").html('<div class="alert alert-danger" role="alert">😴 Chiamata fallita... Per favore riprova.</div>');
 			 }
 		      });
-          $("#sending-information").html('<div class="alert alert-success text-center" role="alert"><h1>Evviva! 🎉</h1>I dati sono stati inviati! Grazie mille per aver contribuito ❤️</div><p class="font-weight-light text-muted mt-4">Ecco come apparirà il tuo messaggio:</p><div class="w-100"><img src="https://wiki.openstreetmap.org/w/images/d/d0/Open_note_marker.png" alt="" class="mx-auto d-block"></div><div class="nota">'+ testo +'</div>');
+          $("#sending-information").html('<div class="alert alert-success text-center" role="alert"><h1>Evviva! 🎉</h1>I dati sono stati inviati! Grazie mille per aver contribuito ❤️</div><p class="font-weight-light text-muted mt-4">Ecco come apparirà il tuo messaggio:</p><div class="w-100"><img src="https://wiki.openstreetmap.org/w/images/d/d0/Open_note_marker.png" alt="" class="mx-auto d-block"></div><div class="note">'+ testo +'</div>');
 		      $('#form')[0].reset();
 		    }
     return false

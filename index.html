@@ -27,14 +27,14 @@
   #map { height: 200px; }
   #acc-status { width: 10px; height: 10px; border-radius: 100%; border: 1px solid #383434; background-color: #8f8f8f; display: inline-block;}
   /** FROM 30 seconds of CSS - https://www.30secondsofcode.org/css/s/border-with-top-triangle/*/
-  .nota {
+  .note {
   position: relative;
   background: #ffffff;
   padding: 15px;
   border: 1px solid #dddddd;
   margin-top: 20px;
 }
-.nota::before, .nota::after {
+.note::before, .note::after {
   content: '';
   position: absolute;
   bottom: 100%;
@@ -42,7 +42,7 @@
   border: 11px solid transparent;
   border-bottom-color: #dddddd;
 }
-.nota::after {
+.note::after {
   left: 50%;
   border: 10px solid transparent;
   border-bottom-color: #ffffff;
@@ -50,6 +50,8 @@
   </style>
 </head>
 <body>
+
+ <!-- START OF CONTENT -->
 <main id="aggiungi" class="container pb-4">
 <!-- LOGO -->
   <h1 class="font-weight-light">
@@ -68,15 +70,6 @@
 
 <!-- MAP -->
  <div id="map"></div>
- <script type="application/javascript">
- var map = L.map('map').setView({lon: 8.196, lat: 42.090}, 5);
-
- // tiles
-       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-         maxZoom: 19,
-         attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a> | <small><a href="https://www.openstreetmap.org/fixthemap">Segnala un errore sulla mappa</a></small>'
-       }).addTo(map);
-       </script>
 
 <!-- LOCALIZE ME BUTTON -->
 <button class="btn btn-primary w-100 mt-2" onclick="getLocation()"><img src="position.svg" width="20" class="mr-2" alt="">LOCALIZZAMI</button>
@@ -135,5 +128,22 @@
   <p class="font-weight-light small text-muted mt-4">Un progetto open source sviluppato dalla comunità di <a href="https://www.openstreetmap.org/" class="badge badge-info">OpenStreetMap</a> in Italia 🇮🇹. <a href="https://github.com/cascafico/indirizzo" class="badge badge-dark">Contribuisci</a> a questo progetto su <a href="https://github.com/cascafico/indirizzo" class="badge badge-dark">GitHub</a>.</p>
   </main>
   <!-- END OF THE MAIN CONTENT (ADDRESS FORM) -->
+
+
+
+    <!-- SCRIPTS -->
+    <script>
+    // LEAFLET
+    var map = L.map('map').setView({lon: 8.196, lat: 42.090}, 5);
+
+    // tiles
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a> | <small><a href="https://www.openstreetmap.org/fixthemap">Segnala un errore sulla mappa</a></small>'
+          }).addTo(map);
+
+     // FORM CHECKER STARTER
+     sendNote();
+   </script>
 </body>
 </html>
