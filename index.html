@@ -11,8 +11,43 @@
   <script src="notes.js"></script>
   <!-- JQUERY -->
   <script src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js"></script>
+  <!-- LEAFLET -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+  integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+  crossorigin=""></script>
+  <!-- STYLES -->
   <!-- BOOTSTRAP -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- CUSTOM STYLES -->
+  <style>
+  #geo-information, #sending-information {min-height: 50px;}
+  #map { height: 200px; }
+  #acc-status { width: 10px; height: 10px; border-radius: 100%; border: 1px solid #383434; background-color: #8f8f8f; display: inline-block;}
+  /** FROM 30 seconds of CSS - https://www.30secondsofcode.org/css/s/border-with-top-triangle/*/
+  .nota {
+  position: relative;
+  background: #ffffff;
+  padding: 15px;
+  border: 1px solid #dddddd;
+  margin-top: 20px;
+}
+.nota::before, .nota::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  border: 11px solid transparent;
+  border-bottom-color: #dddddd;
+}
+.nota::after {
+  left: 50%;
+  border: 10px solid transparent;
+  border-bottom-color: #ffffff;
+}
+  </style>
 </head>
 <body>
 <main id="aggiungi" class="container pb-4">
@@ -23,19 +58,32 @@
 
 <!-- NO JAVASCRIPT ALERT -->
   <noscript>
-  <div class="alert alert-danger" role="alert">
-    Questa pagina ha bisogno di Javascript per funzionare correttamente. Per favore attiva Javascript su questo sito. <a href="https://enable-javascript.com/it/" >Clicca qui per scoprire come attivare Javascript sul tuo browser</a>.
+  <div class="alert alert-danger mt-4 mb-4 text-center" role="alert">
+  <h1>🏎️<br>Javascript</h1>Questa pagina ha bisogno di Javascript per funzionare correttamente. Per favore attiva Javascript su questo sito. <a href="https://enable-javascript.com/it/" class="btn btn-info m-2 d-block">Clicca qui per scoprire come attivare Javascript sul tuo browser 💻</a>
   </div>
   </noscript>
   <!-- STARTING FROM HERE SOME COMMENTS ARE IN ITALIAN -->
 
   <!-- START OF THE MAIN CONTENT -->
- 
-<!-- INSERIRE QUI LA MAPPA -->
 
+<!-- MAP -->
+ <div id="map"></div>
+ <script type="application/javascript">
+ var map = L.map('map').setView({lon: 8.196, lat: 42.090}, 5);
 
-<!-- TASTO LOCALIZZAMI -->
+ // tiles
+       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+         maxZoom: 19,
+         attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a> | <small><a href="https://www.openstreetmap.org/fixthemap">Segnala un errore sulla mappa</a></small>'
+       }).addTo(map);
+       </script>
+
+<!-- LOCALIZE ME BUTTON -->
 <button class="btn btn-primary w-100 mt-2" onclick="getLocation()"><img src="position.svg" width="20" class="mr-2" alt="">LOCALIZZAMI</button>
+<!-- LOCALIZATION INFORMATION -->
+<div id="geo-information" class="mt-2"><div class="alert alert-dark  text-center" role="alert">
+  ☝️ Premi sul tasto "LOCALIZZAMI" per fornire la tua posizione attuale. ☝️
+</div></div>
 <hr>
 
 <!-- START OF THE ADDRESS FORM -->
@@ -62,14 +110,14 @@
       <label for="comune">Comune</label> <span class="badge badge-danger">Necessario</span>
       <input type="text" pattern="[A-Za-z\(\)]+" class="form-control" name="comune" id="comune" placeholder="es. Pietrelcina (BN) o Pietrelcina" autocomplete="address-level2" required>
     </div>
-<!-- CAP ACCETTA SOLO NUMERI E DI 5 CIFRE (FACOLTATIVO) -->
+<!-- CAP ACCETTA SOLO NUMERI E DI 5 CIFRE, ALCUNI DISPOSITIVI POTREBBERO SUGGERIRE L' AUTOCOMPLETAMENTO - ALCUNI DISPOSITIVI POTREBBERO MOSTRARE LA TASTIERA COMPLETA (FACOLTATIVO) -->
     <div class="form-group col">
       <label for="cap"><abbr title="Codice di avviamento postale">CAP</abbr></label> <span class="badge badge-light">Facoltativo</span>
       <input type="text" pattern="[0-9]{5}" class="form-control" name="cap" id="cap" placeholder="es. 82020" inputmode="numeric" autocomplete="postal-code" aria-describedby="capHint">
-      <small id="capHint" class="form-text text-muted">Inserisci il codice di avviamento postale a 5 cifre del comune. Sono consentiti solo numeri</small>
+      <small id="capHint" class="form-text text-muted">Inserisci il codice di avviamento postale a 5 cifre del comune. Sono consentiti solo numeri.</small>
     </div>
     </div>
-<!-- NOTE È UNA TEXTAREA CHE ACCETTA QUALSIASI TIPO DI CARATTERE -->
+<!-- NOTE È UNA TEXTAREA CHE ACCETTA QUALSIASI TIPO DI CARATTERE (FACOLTATIVO) -->
     <div class="form-group">
       <label for="note">Note</label> <span class="badge badge-light">Facoltativo</span>
       <textarea class="form-control" name="note" id="note" aria-describedby="noteHint" placeholder="es. Lato destro della strada, vicino alla chiesa." spellcheck="true"></textarea>
@@ -77,10 +125,14 @@
     </div>
 
 <!-- INVIO -->
-    <div id="geo">
-    </div>
-    <input value="Invia" type="submit" class="btn btn-primary w-100">
+    <span id="acc-status"></span>
+    <span id="geo" class="mr-3 text-muted">
+      Nessuna posizione
+    </span>
+    <input value="Invia" type="submit" class="btn btn-success w-100 btn-lg">
   </form>
+  <div id="sending-information"></div>
+  <p class="font-weight-light small text-muted mt-4">Un progetto open source sviluppato dalla comunità di <a href="https://www.openstreetmap.org/" class="badge badge-info">OpenStreetMap</a> in Italia 🇮🇹. <a href="https://github.com/cascafico/indirizzo" class="badge badge-dark">Contribuisci</a> a questo progetto su <a href="https://github.com/cascafico/indirizzo" class="badge badge-dark">GitHub</a>.</p>
   </main>
   <!-- END OF THE MAIN CONTENT (ADDRESS FORM) -->
 </body>
