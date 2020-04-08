@@ -6,6 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Aggiungi un indirizzo su OpenStreetMap</title>
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#007bff">
+  <meta name="msapplication-TileColor" content="#007bff">
+  <meta name="theme-color" content="#007bff">
   <!-- MAIN SCRIPTS -->
   <script src="geo.js"></script>
   <script src="notes.js"></script>
@@ -24,7 +32,7 @@
   <!-- CUSTOM STYLES -->
   <style>
   #geo-information, #sending-information {min-height: 50px;}
-  #map { height: 200px; }
+  #map { height: 250px; }
   #acc-status { width: 10px; height: 10px; border-radius: 100%; border: 1px solid #383434; background-color: #8f8f8f; display: inline-block;}
   /** FROM 30 seconds of CSS - https://www.30secondsofcode.org/css/s/border-with-top-triangle/*/
   .note {
@@ -51,23 +59,33 @@
 </head>
 <body>
 
- <!-- START OF CONTENT -->
-<main id="aggiungi" class="container pb-4">
-<!-- LOGO -->
-  <h1 class="font-weight-light">
-    Aggiungi un indirizzo su OpenStreetMap
-  </h1>
-
-<!-- NO JAVASCRIPT ALERT -->
-  <noscript>
-  <div class="alert alert-danger mt-4 mb-4 text-center" role="alert">
-  <h1>🏎️<br>Javascript</h1>Questa pagina ha bisogno di Javascript per funzionare correttamente. Per favore attiva Javascript su questo sito. <a href="https://enable-javascript.com/it/" class="btn btn-info m-2 d-block">Clicca qui per scoprire come attivare Javascript sul tuo browser 💻</a>
+<section class="container pb-4 mt-3">
+  <!-- LOGO -->
+  <svg width="96" height="96" class="img-fluid mx-auto d-block mt-2">
+    <image xlink:href="logo.svg" src="logo.png" width="96" height="96" />
+  </svg>
+    <h1 class="font-weight-light text-center text-primary mb-4 h3">
+      Aggiungi un indirizzo su OpenStreetMap
+    </h1>
+    <p class="text-muted h6 text-center">Aggiungi velocemente un indirizzo su 🗺️ OpenStreetMap. Servono solo un 📱 dispositivo dotato di GPS e ⏱️ un paio di minuti!</p>
+    <div class="text-center">
+    <a href="#come-funziona" class="btn btn-outline-info mx-auto ">Informazioni</a>
   </div>
-  </noscript>
+  <!-- NO JAVASCRIPT ALERT -->
+    <noscript>
+    <div class="alert alert-danger mt-4 mb-4 text-center" role="alert">
+    <h1>🏎️<br>Javascript</h1>Questa pagina ha bisogno di Javascript per funzionare correttamente. Per favore attiva Javascript su questo sito. <a href="https://enable-javascript.com/it/" class="btn btn-info m-2 d-block">Clicca qui per scoprire come attivare Javascript sul tuo browser 💻</a>
+    </div>
+    </noscript>
+  </section>
+ <!-- START OF CONTENT -->
+<main id="aggiungi" class="container pb-4 border-right border-left ">
+
   <!-- STARTING FROM HERE SOME COMMENTS ARE IN ITALIAN -->
 
   <!-- START OF THE MAIN CONTENT -->
 
+<h2 class="h3">1. Aggiungi la tua posizione</h2>
 <!-- MAP -->
  <div id="map"></div>
 
@@ -80,6 +98,7 @@
 <hr>
 
 <!-- START OF THE ADDRESS FORM -->
+<h2 class="h3">2. Inserisci i dettagli</h2>
   <form class="mt-4" id="form">
     <div class="form-row">
 <!-- NOME DELLA STRADA ACCETTA COME PATTERN UNA REGEX CON LETERE LATINE, NUMERI (ANCHE ROMANI), TRATTINI, PUNTI E LETTERE FRANCESI E TEDESCHE (PER I PAESI AL CONFINE) PER EVITARE NOMI NON CORRETTI-->
@@ -128,6 +147,37 @@
   <p class="font-weight-light small text-muted mt-4">Un progetto open source sviluppato dalla comunità di <a href="https://www.openstreetmap.org/" class="badge badge-info">OpenStreetMap</a> in Italia 🇮🇹. <a href="https://github.com/cascafico/indirizzo" class="badge badge-dark">Contribuisci</a> a questo progetto su <a href="https://github.com/cascafico/indirizzo" class="badge badge-dark">GitHub</a>.</p>
   </main>
   <!-- END OF THE MAIN CONTENT (ADDRESS FORM) -->
+
+  <!-- SVG SEPARATOR - GENERATED WITH https://getwaves.io/ -->
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+  <path fill="#343a40" fill-opacity="1" d="M0,32L60,53.3C120,75,240,117,360,122.7C480,128,600,96,720,74.7C840,53,960,43,1080,42.7C1200,43,1320,53,1380,58.7L1440,64L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+</svg>
+
+  <!-- START OF ABOUT SECTION -->
+  <section id="come-funziona" class="bg-dark p-4">
+    <div class="container">
+      <img src="https://wiki.openstreetmap.org/w/images/7/79/Public-images-osm_logo.svg" width="100" class="img-fluid mx-auto d-block" alt="Logo di OpenStreetMap">
+      <h2 class="text-center text-white mb-4 h1">Cos'è <strong>OpenStreetMap</strong>? 🤔</h2>
+
+      <p class="text-white-50 text-center h3"><strong>OpenStreetMap</strong> è una database geografico aperto. 👐<br><br>
+        💾 I suoi dati vengono utilizzati da molti siti e applicazioni per molti scopi.<br><br>
+        Tra questi troviamo Facebook, Instagram e anche le forze di polizia. 👮</p>
+
+        <a href="https://www.youtube.com/watch?v=jeG49DxMsvw" class="btn btn-outline-light mx-auto d-block mt-4 btn-lg" target="_blank">🎞️ SCOPRI OPENSTREETMAP</a>
+<hr>
+      <h2 class="text-center text-white mb-4 mt-5 h1">Perché dovrei inserire un indirizzo su <strong>OpenStreetMap</strong>? 🤷</h2>
+      <p class="text-white-50 text-center h3"><strong>OpenStreetMap</strong> è utilizzato anche da tantissimi navigatori, sia per persone che
+        per soccorritori. 🚒<br><br>
+        🔎 Aggiungendo un indirizzo permetti agli altri di cercare te o a te di cercare gli altri.<br><br>
+        Inoltre facendo ciò contribuisci ad un progetto aperto per tutti, non di una singola azienda. 🔓</p>
+        <a href="#aggiungi" class="btn btn-primary mx-auto d-block mt-4 btn-lg mb-4">AGGIUNGI UN INDIRIZZO</a>
+<hr>
+        <h2 class="text-center text-white mb-4 mt-5 h1">Cosa fa questo strumento? 🤨</h2>
+        <p class="text-white-50 text-center h3">Questo strumento crea una <img src="https://wiki.openstreetmap.org/w/images/d/d0/Open_note_marker.png" alt="" class="mx-auto d-inline-block" height="30"> nota su <strong>OpenStreetMap</strong> con i dettagli dell' indirizzo che i volontari aggiungeranno poi alla mappa.<br>
+        👻 La nota è totalmente anonima, quindi nessuno dei volontari saprà mai chi sei nel dettaglio. <br><small>(tranne se ci scrivi tutto su di te... 🙄)</p>
+          <a href="#aggiungi" class="btn btn-primary mx-auto d-block mt-4 btn-lg mb-4">AGGIUNGI ANONIMAMENTE UN INDIRIZZO</a>
+    </div>
+    </section>
 
 
 

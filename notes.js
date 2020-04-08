@@ -10,12 +10,13 @@ function sendNote(){
 		      if($("#civico").val()=="") {alert("Il Campo numero civico non può essere vuoto");return false;}
 
 		      //Creazione testo da inserire nella nota
-		      var testo="AggiuntoIndirizzo"
+		      var testo="Indirizzo:"
 		        +"\naddr:street="+$("#strada").val()
 			+"\naddr:housenumber="+$("#civico").val()
 			+"\naddr:city="+$("#comune").val()
 			+"\naddr:postcode="+$("#cap").val()
-			+"\ndescription="+$("#note").val();
+			+"\ndescription="+$("#note").val()
+      +"\nQuesta nota è stata generata automaticamente dal tool di segnalazione di indirizzi.\n https://cascafico.github.io/indirizzi/\n #AggiuntoIndirizzo";
 
 		      // Invia i dati a osm
 		      // https://api.openstreetmap.org/api/0.6/notes?lat=51.00&lon=0.1&text=ThisIsANote
