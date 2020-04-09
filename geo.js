@@ -41,6 +41,6 @@ function showPosition(position)
 
   // Gestisce i tre stati rispetto all'accuratezza
   if (position.coords.accuracy>35) { $("#acc-status").css("background-color","#b60e0e"); stato=0;}
-  if (position.coords.accuracy<=35 && position.coords.accuracy>20) { $("#acc-status").css("background-color","#c7b51f");stato=1;}
+  if (position.coords.accuracy<=35 && position.coords.accuracy>20) { $("#acc-status").css("background-color","#c7b51f");stato=0;}
   if (position.coords.accuracy<=20) { $("#acc-status").css("background-color","#2ac417"); stato=1;}
   }
