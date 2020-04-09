@@ -1,14 +1,14 @@
 function sendNote(){
   $('#form').submit(function(event){
     event.preventDefault();
-    // non permette di inviare i dati se l'accuratezza supera i 35m
+    // non permette di inviare i dati se l'accuratezza supera i 20m
     if (stato==0) $("#sending-information").html('<div class="alert alert-danger" role="alert">🛰️ Attendi che l\' accuratezza migliori, la spia da rossa deve diventare 🟡 gialla o ancora meglio 🟢 verde!</div>');
 		    else {
 
 		      // Verifica Dei Campi
           if(typeof lat == "undefined") {$("#sending-information").html('<div class="alert alert-danger text-center" role="alert"><p class="h3">😵 Dove sei? 😵</p><p class="h5">Non hai inserito alcuna posizione!</p><small>Ci hai dato tutte le informazioni di cui avevamo bisogno, ma così non riusciremo mai a sapere dove inserirle. 🤔</small></div>');return false;}
-		      if($("#strada").val()=="") {alert("Il Campo Nome non Può essere vuoto");return false;}
-		      if($("#civico").val()=="") {alert("Il Campo numero civico non può essere vuoto");return false;}
+		      if($("#strada").val()=="") {alert("Il Campo Nome della strada non può essere vuoto");return false;}
+		      if($("#civico").val()=="") {alert("Il Campo Numero civico non può essere vuoto");return false;}
 
 		      //Creazione testo da inserire nella nota
 		      var testo="Indirizzo:"
@@ -17,7 +17,7 @@ function sendNote(){
 			+"\naddr:city="+$("#comune").val()
 			+"\naddr:postcode="+$("#cap").val()
 			+"\n------ NOTE ------\n"+$("#note").val()
-      +"\n------\n\nQuesta nota è stata generata automaticamente dal tool di segnalazione di indirizzi.\n https://cascafico.github.io/indirizzo/\n #AggiuntoIndirizzo";
+      +"\n------\n\nQuesta nota è stata generata automaticamente dal tool di segnalazione di indirizzi.\n https://naposm.github.io/indirizzo/\n #AggiuntoIndirizzo";
 
 		      // Invia i dati a osm
 		      // https://api.openstreetmap.org/api/0.6/notes?lat=51.00&lon=0.1&text=ThisIsANote
