@@ -31,9 +31,8 @@ function showPosition(position)
   map.setView([lat, lon], 16);
   marker = new L.Marker([lat, lon]);
   map.addLayer(marker);
-  if (marker !== undefined) {
+  if (marker !== null) {
          map.removeLayer(marker);
-         map.addLayer(marker);
   }
   
 
