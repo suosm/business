@@ -6,6 +6,7 @@ function sendNote(){
 		    else {
 
 		      // Verifica Dei Campi
+          if(typeof lat == "undefined") {$("#sending-information").html('<div class="alert alert-danger text-center" role="alert"><p class="h3">😵 Dove sei? 😵</p><p class="h5">Non hai inserito alcuna posizione!</p><small>Ci hai dato tutte le informazioni di cui avevamo bisogno, ma così non riusciremo mai a sapere dove inserirle. 🤔</small></div>');return false;}
 		      if($("#strada").val()=="") {alert("Il Campo Nome non Può essere vuoto");return false;}
 		      if($("#civico").val()=="") {alert("Il Campo numero civico non può essere vuoto");return false;}
 
@@ -34,7 +35,7 @@ function sendNote(){
         $("#sending-information").html('<div class="alert alert-danger" role="alert">😴 Chiamata fallita... Per favore riprova.</div>');
 			 }
 		      });
-          $("#sending-information").html('<div class="alert alert-success text-center" role="alert"><h1>Evviva! 🎉</h1>I dati sono stati inviati! Grazie mille per aver contribuito ❤️</div><p class="font-weight-light text-muted mt-4">Ecco come apparirà il tuo messaggio:</p><div class="w-100"><img src="https://wiki.openstreetmap.org/w/images/d/d0/Open_note_marker.png" alt="" class="mx-auto d-block"></div><div class="note">'+ testo +'</div>');
+          $("#sending-information").html('<div class="alert alert-success text-center" role="alert"><p class="h3">Evviva! 🎉</p>I dati sono stati inviati! Grazie mille per aver contribuito ❤️</div><p class="font-weight-light text-muted mt-4">Ecco come apparirà il tuo messaggio:</p><div class="w-100"><img src="https://wiki.openstreetmap.org/w/images/d/d0/Open_note_marker.png" alt="" class="mx-auto d-block"></div><div class="note">'+ testo +'</div>');
 		      $('#form')[0].reset();
 		    }
     return false

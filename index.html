@@ -106,28 +106,37 @@
       <label for="strada">Nome della strada</label> <span class="badge badge-danger">Necessario</span>
       <input type="text" pattern="[A-Za-z0-9IVXLCDMßÜüÖöÄäàâçæéèêëïîôœùûüÿÀÂÇÆÉÈÊËÏÎÔŒÙÛÜŸ\-\. ]+" class="form-control" name="strada" id="strada" aria-describedby="stradaHint" placeholder="es. Via Roma" required>
       <small id="stradaHint" class="form-text text-muted">Inserisci il nome della strada in cui si trova l' edificio, senza civico.</small>
+
+   <div class="alert alert-primary small" role="alert">
+   📜 Inserisci il nome completo della strada, senza abbreviazioni.<br>Sono consentiti soltanto caratteri latini con lettere francesi e tedesche, numeri e alcuni simboli.
+ </div>
     </div>
 <!-- NUMERO CIVICO ACCETTA LETTERE E NUMERI (ANCHE ROMANI) -->
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-5">
       <label for="civico">Numero civico</label> <span class="badge badge-danger">Necessario</span>
-      <input type="text" pattern="[A-Za-z0-9IVXLCDM]+" class="form-control" name="civico" id="civico" placeholder="es. 11 o 11a" required>
+      <input type="text" pattern="[A-Za-z0-9IVXLCDM]+" class="form-control" name="civico" id="civico" placeholder="es. 11 o 11a" aria-describedby="civicoHint" required>
+      <small id="civicoHint" class="form-text text-muted">Inserisci il numero civico (anche con lettera).</small>
+      <div class="alert alert-primary small" role="alert">
+      🏡 Se vuoi specificare altre informazioni, ad esempio se il civico è condiviso da più appartamenti, puoi inserirle nel campo "Note".
     </div>
     </div>
-    <div class="alert alert-primary small" role="alert">
-    Inserisci il nome completo della strada, senza abbreviazioni.<br>Sono consentiti soltanto caratteri latini con lettere francesi e tedesche, numeri e alcuni simboli.
-  </div>
+    </div>
     <div class="form-row">
     <div class="form-group col-md-6">
 <!-- COMUNE ACCETTA LETTERE E PARENTESI TONDE, DA ALCUNI CELLULARI L' AUTOCOMPLETAMENTO PROVA A SUGGERIRE L' INDIRIZZO -->
       <label for="comune">Comune</label> <span class="badge badge-danger">Necessario</span>
-      <input type="text" pattern="[A-Za-z\(\) ]+" class="form-control" name="comune" id="comune" placeholder="es. Pietrelcina (BN) o Pietrelcina" autocomplete="address-level2" required>
+      <input type="text" pattern="[A-Za-z\.\- ]+" class="form-control" name="comune" id="comune" placeholder="es. Pietrelcina" autocomplete="address-level2" aria-describedby="stradaHint" required>
+      <small id="civicoHint" class="form-text text-muted">Inserisci il comune in cui si trova la strada, senza provincia.</small>
+      <div class="alert alert-primary small" role="alert">
+      ⚔️ Se la strada è condivisa da più comuni o se ha nomi diversi a seconda del comune, puoi scrivere tutto nel campo "Note".
+      </div>
     </div>
 <!-- CAP ACCETTA SOLO NUMERI E DI 5 CIFRE, ALCUNI DISPOSITIVI POTREBBERO SUGGERIRE L' AUTOCOMPLETAMENTO - ALCUNI DISPOSITIVI POTREBBERO MOSTRARE LA TASTIERA COMPLETA (FACOLTATIVO) -->
     <div class="form-group col">
       <label for="cap"><abbr title="Codice di avviamento postale">CAP</abbr></label> <span class="badge badge-light">Facoltativo</span>
       <input type="text" pattern="[0-9]{5}" class="form-control" name="cap" id="cap" placeholder="es. 82020" inputmode="numeric" autocomplete="postal-code" aria-describedby="capHint">
       <small id="capHint" class="form-text text-muted">Inserisci il codice di avviamento postale a 5 cifre del comune. Sono consentiti solo numeri.</small>
-    </div>
+      </div>
     </div>
 <!-- NOTE È UNA TEXTAREA CHE ACCETTA QUALSIASI TIPO DI CARATTERE (FACOLTATIVO) -->
     <div class="form-group">
@@ -159,7 +168,7 @@
       <img src="https://wiki.openstreetmap.org/w/images/7/79/Public-images-osm_logo.svg" width="100" class="img-fluid mx-auto d-block" alt="Logo di OpenStreetMap">
       <h2 class="text-center text-white mb-4 h1">Cos'è <strong>OpenStreetMap</strong>? 🤔</h2>
 
-      <p class="text-white-50 text-center h3"><strong>OpenStreetMap</strong> è una database geografico aperto. 👐<br><br>
+      <p class="text-white-50 text-center h3"><strong>OpenStreetMap</strong> è un database geografico aperto. 👐<br><br>
         💾 I suoi dati vengono utilizzati da molti siti e applicazioni per molti scopi.<br><br>
         Tra questi troviamo Facebook, Instagram e anche le forze di polizia. 👮</p>
 
@@ -173,9 +182,13 @@
         <a href="#aggiungi" class="btn btn-primary mx-auto d-block mt-4 btn-lg mb-4">AGGIUNGI UN INDIRIZZO</a>
 <hr>
         <h2 class="text-center text-white mb-4 mt-5 h1">Cosa fa questo strumento? 🤨</h2>
-        <p class="text-white-50 text-center h3">Questo strumento crea una <img src="https://wiki.openstreetmap.org/w/images/d/d0/Open_note_marker.png" alt="" class="mx-auto d-inline-block" height="30"> nota su <strong>OpenStreetMap</strong> con i dettagli dell' indirizzo che i volontari aggiungeranno poi alla mappa.<br>
-        👻 La nota è totalmente anonima, quindi nessuno dei volontari saprà mai chi sei nel dettaglio. <br><small>(tranne se ci scrivi tutto su di te... 🙄)</p>
+        <p class="text-white-50 text-center h3">Questo strumento crea una <img src="https://wiki.openstreetmap.org/w/images/d/d0/Open_note_marker.png" alt="" class="mx-auto d-inline-block" height="30"> nota su <strong>OpenStreetMap</strong> con i dettagli dell' indirizzo che i volontari aggiungeranno poi alla mappa.<br><br>
+        👻 La nota è <u>totalmente anonima</u>, quindi nessuno dei volontari saprà mai chi sei nel dettaglio. <br><small>(tranne se ci scrivi tutto su di te... 🙄)</p>
           <a href="#aggiungi" class="btn btn-primary mx-auto d-block mt-4 btn-lg mb-4">AGGIUNGI ANONIMAMENTE UN INDIRIZZO</a>
+          <hr>
+                  <h2 class="text-center text-white mb-4 mt-5 h1">Sono un mappatore anche io, come posso aiutare? 💪</h2>
+                  <p class="text-white-50 text-center h3">Se sei già un mappatore di <strong>OpenStreetMap</strong>, puoi filtrare le note su NotesReview con la query <i>AggiuntoIndirizzo</i>. Tutti i tag sono già inseriti, basterà solo mapparli!</p>
+                    <a href="https://ent8r.github.io/NotesReview/?query=AggiuntoIndirizzo" class="btn btn-primary mx-auto d-block mt-4 btn-lg mb-4">VAI ALLE NOTE</a>
     </div>
     </section>
 
