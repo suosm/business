@@ -16,8 +16,8 @@ function sendNote(){
 			+"\naddr:housenumber="+$("#civico").val()
 			+"\naddr:city="+$("#comune").val()
 			+"\naddr:postcode="+$("#cap").val()
-			+"\ndescription="+$("#note").val()
-      +"\nQuesta nota è stata generata automaticamente dal tool di segnalazione di indirizzi.\n https://cascafico.github.io/indirizzi/\n #AggiuntoIndirizzo";
+			+"\n------ NOTE ------\n"+$("#note").val()
+      +"\n------\n\nQuesta nota è stata generata automaticamente dal tool di segnalazione di indirizzi.\n https://cascafico.github.io/indirizzo/\n #AggiuntoIndirizzo";
 
 		      // Invia i dati a osm
 		      // https://api.openstreetmap.org/api/0.6/notes?lat=51.00&lon=0.1&text=ThisIsANote
