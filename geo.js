@@ -37,7 +37,7 @@ function showPosition(position)
   
 
   //visualizza i dati nel div con id geo
-  $("#geo").html("Lat: " + lat + " Lon: " + lon +" Accuratezza: "+ position.coords.accuracy+ "m Direzione: ");
+  $("#geo").html("Lat: " + lat + " Lon: " + lon +" Accuratezza: "+ position.coords.accuracy);
 
   // Gestisce i tre stati rispetto all'accuratezza
   if (position.coords.accuracy>35) { $("#acc-status").css("background-color","#b60e0e"); stato=0;}
