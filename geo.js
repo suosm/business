@@ -29,6 +29,7 @@ function showPosition(position)
 
   // aggiunge marker sulla mappa
   map.setView([lat, lon], 16);
+  map.addLayer(marker);
   if (marker !== undefined) {
          map.removeLayer(marker);
          marker = new L.Marker([lat, lon]);
