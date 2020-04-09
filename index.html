@@ -125,7 +125,7 @@
     <div class="form-group col-md-6">
 <!-- COMUNE ACCETTA LETTERE E PARENTESI TONDE, DA ALCUNI CELLULARI L' AUTOCOMPLETAMENTO PROVA A SUGGERIRE L' INDIRIZZO -->
       <label for="comune">Comune</label> <span class="badge badge-danger">Necessario</span>
-      <input type="text" pattern="[A-Za-z\.\- ]+" class="form-control" name="comune" id="comune" placeholder="es. Pietrelcina" autocomplete="address-level2" aria-describedby="stradaHint" required>
+      <input type="text" pattern="[A-Za-zßÜüÖöÄäàâçæéèêëïîôœùûüÿÀÂÇÆÉÈÊËÏÎÔŒÙÛÜŸ\-\. ']+" class="form-control" name="comune" id="comune" placeholder="es. Pietrelcina" autocomplete="address-level2" aria-describedby="stradaHint" required>
       <small id="civicoHint" class="form-text text-muted">Inserisci il comune in cui si trova la strada, senza provincia.</small>
       <div class="alert alert-primary small" role="alert">
       ⚔️ Se la strada è condivisa da più comuni o se ha nomi diversi a seconda del comune, puoi scrivere tutto nel campo "Note".
