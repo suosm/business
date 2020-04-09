@@ -31,9 +31,9 @@ function showPosition(position)
   map.setView([lat, lon], 16);
   marker = new L.Marker([lat, lon]);
   map.addLayer(marker);
-  if (marker !== null) {
-         map.removeLayer(marker);
-  }
+  //if (marker !== null) {
+  //       map.removeLayer(marker);
+  //}
   
 
   //visualizza i dati nel div con id geo
