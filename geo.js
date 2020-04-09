@@ -32,8 +32,9 @@ function showPosition(position)
   if (marker != undefined) {
          map.removeLayer(marker);
          marker = new L.Marker([lat, lon]);
+         map.addLayer(marker);
   }
-  map.addLayer(marker);
+  
 
   //visualizza i dati nel div con id geo
   $("#geo").html("Lat: " + lat + " Lon: " + lon +" Accuratezza: "+ position.coords.accuracy+ "m Direzione: ");
