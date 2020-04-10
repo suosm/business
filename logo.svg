@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<!-- Created with Inkscape (http://www.inkscape.org/) by naposm -->
 
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -15,7 +15,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   sodipodi:docname="logo indirizzo.svg">
+   sodipodi:docname="logo.svg">
   <title
      id="title841">Targa indirizzo</title>
   <defs
@@ -28,8 +28,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="93.267319"
-     inkscape:cy="-63.247233"
+     inkscape:cx="-154.72513"
+     inkscape:cy="98.377175"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -140,16 +140,14 @@
        height="20.883184"
        x="36.616917"
        y="-38.312611" />
-    <text
-       xml:space="preserve"
+    <g
+       aria-label="3"
        style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:22.9264431px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri Light';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.86580539"
-       x="23.217493"
-       y="33.212128"
-       id="text837"><tspan
-         sodipodi:role="line"
-         id="tspan835"
-         x="23.217493"
-         y="33.212128"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue';stroke-width:2.86580539">3</tspan></text>
+       id="text837">
+      <path
+         d="m 27.734002,33.441392 q -1.857042,0 -2.819952,-1.03169 -0.939984,-1.03169 -0.939984,-2.957511 v -1.306807 h 2.38435 v 1.421439 q 0,1.581925 1.306807,1.581925 0.64194,0 0.962911,-0.38975 0.343896,-0.412676 0.343896,-1.421439 v -1.306807 q 0,-1.10047 -0.389749,-1.558999 -0.38975,-0.481455 -1.260955,-0.481455 h -0.848278 v -2.292644 h 0.917058 q 0.756572,0 1.123395,-0.38975 0.38975,-0.389749 0.38975,-1.306807 v -1.169249 q 0,-0.825352 -0.343897,-1.215101 -0.343896,-0.38975 -0.917057,-0.38975 -1.215102,0 -1.215102,1.490219 v 1.054617 h -2.38435 v -0.848279 q 0,-1.925821 0.939984,-2.957511 0.962911,-1.03169 2.751173,-1.03169 1.811189,0 2.751174,1.03169 0.939984,1.008764 0.939984,2.934585 v 0.573161 q 0,1.306807 -0.435603,2.109233 -0.435602,0.779499 -1.35266,1.123395 v 0.04585 q 0.985837,0.366823 1.42144,1.192175 0.435602,0.825352 0.435602,2.109233 v 1.421439 q 0,1.925822 -0.962911,2.957512 -0.939984,1.008763 -2.797026,1.008763 z"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue';stroke-width:2.86580539"
+         id="path824" />
+    </g>
   </g>
 </svg>

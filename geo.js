@@ -20,6 +20,24 @@ function showError()
   $("#geo-information").html('<div class="alert alert-danger" role="alert">😨 Errore nella localizzazione.</div>');
 }
 
+
+// Function che aggiunge un marker alla mappa
+function addMarker(lat, lon){
+if (typeof marker != "undefined") {
+       map.removeLayer(marker);
+}
+map.setView([lat, lon], 16);
+marker = new L.Marker([lat, lon]);
+map.addLayer(marker);
+}
+
+// Aggiunge marker al tocco e ottiene posizione
+// function addMarkerClick(e){
+//   console.log(this.getLatLng());
+// }
+// map.on('click', addMarkerClick);
+
+
   //Visualizza la posizione
 function showPosition(position)
   {
@@ -28,13 +46,8 @@ function showPosition(position)
   direzione=0;
 
   // aggiunge marker sulla mappa
-  map.setView([lat, lon], 16);
-  marker = new L.Marker([lat, lon]);
-  map.addLayer(marker);
-  //if (marker !== null) {
-  //       map.removeLayer(marker);
-  //}
-  
+  addMarker(lat, lon);
+
 
   //visualizza i dati nel div con id geo
   $("#geo").html("Lat: " + lat + " Lon: " + lon +" Accuratezza: "+ position.coords.accuracy);

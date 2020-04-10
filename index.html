@@ -165,6 +165,11 @@
   <!-- START OF ABOUT SECTION -->
   <section id="come-funziona" class="bg-dark p-4">
     <div class="container">
+      <h2 class="text-center text-white mb-4 mt-5 h1">Cosa fa questo strumento? 🤨</h2>
+      <p class="text-white-50 text-center h3">Questo strumento crea una <img src="https://wiki.openstreetmap.org/w/images/d/d0/Open_note_marker.png" alt="" class="mx-auto d-inline-block" height="30"> nota su <strong>OpenStreetMap</strong> con i dettagli dell' indirizzo che i volontari aggiungeranno poi alla mappa.<br><br>
+      👻 La nota è <u class="text-danger">totalmente anonima</u>, quindi nessuno dei volontari saprà mai chi sei nel dettaglio. <br><small>(tranne se ci scrivi tutto su di te... 🙄)</p>
+        <a href="#aggiungi" class="btn btn-primary mx-auto d-block mt-4 btn-lg mb-4">AGGIUNGI ANONIMAMENTE UN INDIRIZZO</a>
+        <hr>
       <img src="https://wiki.openstreetmap.org/w/images/7/79/Public-images-osm_logo.svg" width="100" class="img-fluid mx-auto d-block" alt="Logo di OpenStreetMap">
       <h2 class="text-center text-white mb-4 h1">Cos'è <strong>OpenStreetMap</strong>? 🤔</h2>
 
@@ -181,14 +186,9 @@
         Inoltre facendo ciò contribuisci ad un progetto aperto per tutti, non di una singola azienda. 🔓</p>
         <a href="#aggiungi" class="btn btn-primary mx-auto d-block mt-4 btn-lg mb-4">AGGIUNGI UN INDIRIZZO</a>
 <hr>
-        <h2 class="text-center text-white mb-4 mt-5 h1">Cosa fa questo strumento? 🤨</h2>
-        <p class="text-white-50 text-center h3">Questo strumento crea una <img src="https://wiki.openstreetmap.org/w/images/d/d0/Open_note_marker.png" alt="" class="mx-auto d-inline-block" height="30"> nota su <strong>OpenStreetMap</strong> con i dettagli dell' indirizzo che i volontari aggiungeranno poi alla mappa.<br><br>
-        👻 La nota è <u>totalmente anonima</u>, quindi nessuno dei volontari saprà mai chi sei nel dettaglio. <br><small>(tranne se ci scrivi tutto su di te... 🙄)</p>
-          <a href="#aggiungi" class="btn btn-primary mx-auto d-block mt-4 btn-lg mb-4">AGGIUNGI ANONIMAMENTE UN INDIRIZZO</a>
-          <hr>
                   <h2 class="text-center text-white mb-4 mt-5 h1">Sono un mappatore anche io, come posso aiutare? 💪</h2>
                   <p class="text-white-50 text-center h3">Se sei già un mappatore di <strong>OpenStreetMap</strong>, puoi filtrare le note su NotesReview con la query <i>AggiuntoIndirizzo</i>. Tutti i tag sono già inseriti, basterà solo mapparli!</p>
-                    <a href="https://ent8r.github.io/NotesReview/?query=AggiuntoIndirizzo" class="btn btn-primary mx-auto d-block mt-4 btn-lg mb-4">VAI ALLE NOTE</a>
+                    <a href="https://ent8r.github.io/NotesReview/?query=AggiuntoIndirizzo" class="btn btn-danger mx-auto d-block mt-4 btn-lg mb-4">VAI ALLE NOTE</a>
     </div>
     </section>
 
@@ -198,12 +198,18 @@
     <script>
     // LEAFLET
     var map = L.map('map').setView({lon: 8.196, lat: 42.090}, 5);
+    inertia = true;
 
-    // tiles
-          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a> | <small><a href="https://www.openstreetmap.org/fixthemap">Segnala un errore sulla mappa</a></small>'
-          }).addTo(map);
+    // Esri world Imagery tiles http://bl.ocks.org/d3noob/8663620
+    mapLink =
+      '<a href="http://www.esri.com/">Esri</a>';
+  wholink =
+      'i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
+  L.tileLayer(
+      'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+      attribution: '&copy; '+mapLink+', '+wholink,
+      maxZoom: 18,
+      }).addTo(map);
 
      // FORM CHECKER STARTER
      sendNote();
