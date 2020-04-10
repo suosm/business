@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
   <!-- MAIN TAGS -->
   <meta charset="UTF-8">
@@ -16,36 +17,32 @@
   <meta name="msapplication-TileColor" content="#007bff">
   <meta name="theme-color" content="#007bff">
   <!-- OPEN GRAPH + TWITTER -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://naposm.github.io/indirizzo/">
-<meta property="og:title" content="Aggiungi il tuo indirizzo su OpenStreetMap 📍  ">
-<meta property="og:description" content="Aggiungi velocemente un indirizzo sulle mappe di OpenStreetMap utilizzando il GPS del tuo dispositivo! Crea una mappa libera per tutti! 🗺️">
-<meta property="og:image" content="opengraph.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="628">
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://naposm.github.io/indirizzo/">
-<meta property="twitter:title" content="Aggiungi il tuo indirizzo su OpenStreetMap 📍  ">
-<meta property="twitter:description" content="Aggiungi velocemente un indirizzo sulle mappe di OpenStreetMap utilizzando il GPS del tuo dispositivo! Crea una mappa libera per tutti! 🗺️">
-<meta property="twitter:image" content="opengraph.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://naposm.github.io/indirizzo/">
+  <meta property="og:title" content="Aggiungi il tuo indirizzo su OpenStreetMap 📍  ">
+  <meta property="og:description" content="Aggiungi velocemente un indirizzo sulle mappe di OpenStreetMap utilizzando il GPS del tuo dispositivo! Crea una mappa libera per tutti! 🗺️">
+  <meta property="og:image" content="opengraph.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="628">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://naposm.github.io/indirizzo/">
+  <meta property="twitter:title" content="Aggiungi il tuo indirizzo su OpenStreetMap 📍  ">
+  <meta property="twitter:description" content="Aggiungi velocemente un indirizzo sulle mappe di OpenStreetMap utilizzando il GPS del tuo dispositivo! Crea una mappa libera per tutti! 🗺️">
+  <meta property="twitter:image" content="opengraph.jpg">
   <!-- MAIN SCRIPTS -->
   <script src="geo.js"></script>
   <script src="notes.js"></script>
   <!-- JQUERY -->
   <script src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js"></script>
   <!-- LEAFLET -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-  crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-  integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-  crossorigin=""></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
   <!-- STYLES -->
   <!-- BOOTSTRAP -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <!-- CUSTOM STYLES -->
   <style>
-  #geo-information, #sending-information {min-height: 50px;}
+    #geo-information, #sending-information {min-height: 50px;}
   #map { height: 250px; }
   #acc-status { width: 10px; height: 10px; border-radius: 100%; border: 1px solid #383434; background-color: #8f8f8f; display: inline-block;}
   /** FROM 30 seconds of CSS - https://www.30secondsofcode.org/css/s/border-with-top-triangle/*/
@@ -69,121 +66,200 @@
   border: 10px solid transparent;
   border-bottom-color: #ffffff;
 }
+
+/* SOCIAL BUTTONS FROM https://www.sharingbuttons.io/ */
+
+.resp-sharing-button__link,
+.resp-sharing-button__icon {
+  display: inline-block
+}
+
+.resp-sharing-button__link, .resp-sharing-button__link:hover {
+  text-decoration: none;
+  color: #fff;
+  margin: 0.5em
+}
+
+.resp-sharing-button {
+  border-radius: 5px;
+  transition: 25ms ease-out;
+  padding: 0.5em 0.75em;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif
+}
+
+.resp-sharing-button__icon svg {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.4em;
+  vertical-align: top
+}
+
+.resp-sharing-button--small svg {
+  margin: 0;
+  vertical-align: middle
+}
+
+/* Non solid icons get a stroke */
+.resp-sharing-button__icon {
+  stroke: #fff;
+  fill: none
+}
+
+/* Solid icons get a fill */
+.resp-sharing-button__icon--solid,
+.resp-sharing-button__icon--solidcircle {
+  fill: #fff;
+  stroke: none
+}
+
+.resp-sharing-button--whatsapp {
+  background-color: #25D366
+}
+
+.resp-sharing-button--whatsapp:hover {
+  background-color: #1da851
+}
+
+.resp-sharing-button--whatsapp {
+  background-color: #25D366;
+  border-color: #25D366;
+}
+
+.resp-sharing-button--whatsapp:hover,
+.resp-sharing-button--whatsapp:active {
+  background-color: #1DA851;
+  border-color: #1DA851;
+}
+
+.resp-sharing-button--telegram {
+  background-color: #54A9EB;
+}
+
+.resp-sharing-button--telegram:hover {
+  background-color: #4B97D1;}
+
+
   </style>
 </head>
+
 <body>
 
-<section class="container pb-4 mt-3">
-  <!-- LOGO -->
-  <svg width="96" height="96" class="img-fluid mx-auto d-block mt-2">
-    <image xlink:href="logo.svg" src="logo.png" width="96" height="96" />
-  </svg>
+  <section class="container pb-4 mt-3">
+    <!-- LOGO -->
+    <svg width="96" height="96" class="img-fluid mx-auto d-block mt-2">
+      <image xlink:href="logo.svg" src="logo.png" width="96" height="96" />
+    </svg>
     <h1 class="font-weight-light text-center text-primary mb-4 h3">
       Aggiungi un indirizzo su OpenStreetMap
     </h1>
     <p class="text-muted h6 text-center">Aggiungi velocemente un indirizzo su 🗺️ OpenStreetMap. Servono solo un 📱 dispositivo dotato di GPS e ⏱️ un paio di minuti!</p>
     <div class="text-center">
-    <a href="#come-funziona" class="btn btn-outline-info mx-auto ">Informazioni</a>
-  </div>
-  <!-- NO JAVASCRIPT ALERT -->
-    <noscript>
-    <div class="alert alert-danger mt-4 mb-4 text-center" role="alert">
-    <h1>🏎️<br>Javascript</h1>Questa pagina ha bisogno di Javascript per funzionare correttamente. Per favore attiva Javascript su questo sito. <a href="https://enable-javascript.com/it/" class="btn btn-info m-2 d-block">Clicca qui per scoprire come attivare Javascript sul tuo browser 💻</a>
+      <a href="#come-funziona" class="btn btn-outline-info mx-auto ">Informazioni</a>
     </div>
+    <!-- NO JAVASCRIPT ALERT -->
+    <noscript>
+      <div class="alert alert-danger mt-4 mb-4 text-center" role="alert">
+        <h1>🏎️<br>Javascript</h1>Questa pagina ha bisogno di Javascript per funzionare correttamente. Per favore attiva Javascript su questo sito. <a href="https://enable-javascript.com/it/" class="btn btn-info m-2 d-block">Clicca qui per scoprire
+          come attivare Javascript sul tuo browser 💻</a>
+      </div>
     </noscript>
   </section>
- <!-- START OF CONTENT -->
-<main id="aggiungi" class="container pb-4 border-right border-left ">
+  <!-- START OF CONTENT -->
+  <main id="aggiungi" class="container pb-4 border-right border-left ">
 
-  <!-- STARTING FROM HERE SOME COMMENTS ARE IN ITALIAN -->
+    <!-- STARTING FROM HERE SOME COMMENTS ARE IN ITALIAN -->
 
-  <!-- START OF THE MAIN CONTENT -->
+    <!-- START OF THE MAIN CONTENT -->
 
-<h2 class="h3">1. Aggiungi la tua posizione</h2>
-<!-- MAP -->
- <div id="map"></div>
+    <h2 class="h3">1. Aggiungi la tua posizione</h2>
+    <!-- MAP -->
+    <div id="map"></div>
 
-<!-- LOCALIZE ME BUTTON -->
-<button class="btn btn-primary w-100 mt-2" onclick="getLocation()"><img src="position.svg" width="20" class="mr-2" alt="">LOCALIZZAMI</button>
-<!-- LOCALIZATION INFORMATION -->
-<div id="geo-information" class="mt-2"><div class="alert alert-dark  text-center" role="alert">
-  ☝️ Premi sul tasto "LOCALIZZAMI" per fornire la tua posizione attuale. ☝️
-</div></div>
-<hr>
-
-<!-- START OF THE ADDRESS FORM -->
-<h2 class="h3">2. Inserisci i dettagli</h2>
-  <form class="mt-4" id="form">
-    <div class="form-row">
-<!-- NOME DELLA STRADA ACCETTA COME PATTERN UNA REGEX CON LETERE LATINE, NUMERI (ANCHE ROMANI), TRATTINI, PUNTI E LETTERE FRANCESI E TEDESCHE (PER I PAESI AL CONFINE) PER EVITARE NOMI NON CORRETTI-->
-    <div class="form-group col">
-      <label for="strada">Nome della strada</label> <span class="badge badge-danger">Necessario</span>
-      <input type="text" pattern="[A-Za-z0-9IVXLCDMßÜüÖöÄäàâçæéèêëïîôœùûüÿÀÂÇÆÉÈÊËÏÎÔŒÙÛÜŸ\-\. ']+" class="form-control" name="strada" id="strada" aria-describedby="stradaHint" placeholder="es. Via Roma" required>
-      <small id="stradaHint" class="form-text text-muted">Inserisci il nome della strada in cui si trova l' edificio, senza civico.</small>
-
-   <div class="alert alert-primary small" role="alert">
-   📜 Inserisci il nome completo della strada, senza abbreviazioni.<br>Sono consentiti soltanto caratteri latini con lettere francesi e tedesche, numeri e alcuni simboli.
- </div>
-    </div>
-<!-- NUMERO CIVICO ACCETTA LETTERE E NUMERI (ANCHE ROMANI) -->
-    <div class="form-group col-md-5">
-      <label for="civico">Numero civico</label> <span class="badge badge-danger">Necessario</span>
-      <input type="text" pattern="[A-Za-z0-9IVXLCDM]+" class="form-control" name="civico" id="civico" placeholder="es. 11 o 11a" aria-describedby="civicoHint" required>
-      <small id="civicoHint" class="form-text text-muted">Inserisci il numero civico (anche con lettera).</small>
-      <div class="alert alert-primary small" role="alert">
-      🏡 Se vuoi specificare altre informazioni, ad esempio se il civico è condiviso da più appartamenti, puoi inserirle nel campo "Note".
-    </div>
-    </div>
-    </div>
-    <div class="form-row">
-    <div class="form-group col-md-6">
-<!-- COMUNE ACCETTA LETTERE E PARENTESI TONDE, DA ALCUNI CELLULARI L' AUTOCOMPLETAMENTO PROVA A SUGGERIRE L' INDIRIZZO -->
-      <label for="comune">Comune</label> <span class="badge badge-danger">Necessario</span>
-      <input type="text" pattern="[A-Za-zßÜüÖöÄäàâçæéèêëïîôœùûüÿÀÂÇÆÉÈÊËÏÎÔŒÙÛÜŸ\-\. ']+" class="form-control" name="comune" id="comune" placeholder="es. Pietrelcina" autocomplete="address-level2" aria-describedby="stradaHint" required>
-      <small id="civicoHint" class="form-text text-muted">Inserisci il comune in cui si trova la strada, senza provincia.</small>
-      <div class="alert alert-primary small" role="alert">
-      ⚔️ Se la strada è condivisa da più comuni o se ha nomi diversi a seconda del comune, puoi scrivere tutto nel campo "Note".
+    <!-- LOCALIZE ME BUTTON -->
+    <button class="btn btn-primary w-100 mt-2" onclick="getLocation()"><img src="position.svg" width="20" class="mr-2" alt="">LOCALIZZAMI</button>
+    <!-- LOCALIZATION INFORMATION -->
+    <div id="geo-information" class="mt-2">
+      <div class="alert alert-dark  text-center" role="alert">
+        ☝️ Premi sul tasto "LOCALIZZAMI" per fornire la tua posizione attuale. ☝️
       </div>
     </div>
-<!-- CAP ACCETTA SOLO NUMERI E DI 5 CIFRE, ALCUNI DISPOSITIVI POTREBBERO SUGGERIRE L' AUTOCOMPLETAMENTO - ALCUNI DISPOSITIVI POTREBBERO MOSTRARE LA TASTIERA COMPLETA (FACOLTATIVO) -->
-    <div class="form-group col">
-      <label for="cap"><abbr title="Codice di avviamento postale">CAP</abbr></label> <span class="badge badge-light">Facoltativo</span>
-      <input type="text" pattern="[0-9]{5}" class="form-control" name="cap" id="cap" placeholder="es. 82020" inputmode="numeric" autocomplete="postal-code" aria-describedby="capHint">
-      <small id="capHint" class="form-text text-muted">Inserisci il codice di avviamento postale a 5 cifre del comune. Sono consentiti solo numeri.</small>
-      </div>
-    </div>
-<!-- NOTE È UNA TEXTAREA CHE ACCETTA QUALSIASI TIPO DI CARATTERE (FACOLTATIVO) -->
-    <div class="form-group">
-      <label for="note">Note</label> <span class="badge badge-light">Facoltativo</span>
-      <textarea class="form-control" name="note" id="note" aria-describedby="noteHint" placeholder="es. Lato destro della strada, vicino alla chiesa." spellcheck="true"></textarea>
-      <small id="noteHint" class="form-text text-muted">Inserisci eventuali commenti da far conoscere ai mappatori che inseriranno l' indirizzo da te fornito sulla mappa.</small>
-    </div>
+    <hr>
 
-<!-- INVIO -->
-    <span id="acc-status"></span>
-    <span id="geo" class="mr-3 text-muted">
-      Nessuna posizione
-    </span>
-    <input value="Invia" type="submit" class="btn btn-success w-100 btn-lg mb-3">
-  </form>
-  <div id="sending-information"></div>
-  <p class="font-weight-light small text-muted mt-4">Un progetto open source sviluppato dalla comunità di <a href="https://www.openstreetmap.org/" class="badge badge-info">OpenStreetMap</a> in Italia 🇮🇹. <a href="https://github.com/cascafico/indirizzo" class="badge badge-dark">Contribuisci</a> a questo progetto su <a href="https://github.com/cascafico/indirizzo" class="badge badge-dark">GitHub</a>.</p>
+    <!-- START OF THE ADDRESS FORM -->
+    <h2 class="h3">2. Inserisci i dettagli</h2>
+    <form class="mt-4" id="form">
+      <div class="form-row">
+        <!-- NOME DELLA STRADA ACCETTA COME PATTERN UNA REGEX CON LETERE LATINE, NUMERI (ANCHE ROMANI), TRATTINI, PUNTI E LETTERE FRANCESI E TEDESCHE (PER I PAESI AL CONFINE) PER EVITARE NOMI NON CORRETTI-->
+        <div class="form-group col">
+          <label for="strada">Nome della strada</label> <span class="badge badge-danger">Necessario</span>
+          <input type="text" pattern="[A-Za-z0-9IVXLCDMßÜüÖöÄäàâçæéèêëïîôœùûüÿÀÂÇÆÉÈÊËÏÎÔŒÙÛÜŸ\-\. ']+" class="form-control" name="strada" id="strada" aria-describedby="stradaHint" placeholder="es. Via Roma" required>
+          <small id="stradaHint" class="form-text text-muted">Inserisci il nome della strada in cui si trova l' edificio, senza civico.</small>
+
+          <div class="alert alert-primary small" role="alert">
+            📜 Inserisci il nome completo della strada, senza abbreviazioni.<br>Sono consentiti soltanto caratteri latini con lettere francesi e tedesche, numeri e alcuni simboli.
+          </div>
+        </div>
+        <!-- NUMERO CIVICO ACCETTA LETTERE E NUMERI (ANCHE ROMANI) -->
+        <div class="form-group col-md-5">
+          <label for="civico">Numero civico</label> <span class="badge badge-danger">Necessario</span>
+          <input type="text" pattern="[A-Za-z0-9IVXLCDM]+" class="form-control" name="civico" id="civico" placeholder="es. 11 o 11a" aria-describedby="civicoHint" required>
+          <small id="civicoHint" class="form-text text-muted">Inserisci il numero civico (anche con lettera).</small>
+          <div class="alert alert-primary small" role="alert">
+            🏡 Se vuoi specificare altre informazioni, ad esempio se il civico è condiviso da più appartamenti, puoi inserirle nel campo "Note".
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <!-- COMUNE ACCETTA LETTERE E PARENTESI TONDE, DA ALCUNI CELLULARI L' AUTOCOMPLETAMENTO PROVA A SUGGERIRE L' INDIRIZZO -->
+          <label for="comune">Comune</label> <span class="badge badge-danger">Necessario</span>
+          <input type="text" pattern="[A-Za-zßÜüÖöÄäàâçæéèêëïîôœùûüÿÀÂÇÆÉÈÊËÏÎÔŒÙÛÜŸ\-\. ']+" class="form-control" name="comune" id="comune" placeholder="es. Pietrelcina" autocomplete="address-level2" aria-describedby="stradaHint" required>
+          <small id="civicoHint" class="form-text text-muted">Inserisci il comune in cui si trova la strada, senza provincia.</small>
+          <div class="alert alert-primary small" role="alert">
+            ⚔️ Se la strada è condivisa da più comuni o se ha nomi diversi a seconda del comune, puoi scrivere tutto nel campo "Note".
+          </div>
+        </div>
+        <!-- CAP ACCETTA SOLO NUMERI E DI 5 CIFRE, ALCUNI DISPOSITIVI POTREBBERO SUGGERIRE L' AUTOCOMPLETAMENTO - ALCUNI DISPOSITIVI POTREBBERO MOSTRARE LA TASTIERA COMPLETA (FACOLTATIVO) -->
+        <div class="form-group col">
+          <label for="cap"><abbr title="Codice di avviamento postale">CAP</abbr></label> <span class="badge badge-light">Facoltativo</span>
+          <input type="text" pattern="[0-9]{5}" class="form-control" name="cap" id="cap" placeholder="es. 82020" inputmode="numeric" autocomplete="postal-code" aria-describedby="capHint">
+          <small id="capHint" class="form-text text-muted">Inserisci il codice di avviamento postale a 5 cifre del comune. Sono consentiti solo numeri.</small>
+        </div>
+      </div>
+      <!-- NOTE È UNA TEXTAREA CHE ACCETTA QUALSIASI TIPO DI CARATTERE (FACOLTATIVO) -->
+      <div class="form-group">
+        <label for="note">Note</label> <span class="badge badge-light">Facoltativo</span>
+        <textarea class="form-control" name="note" id="note" aria-describedby="noteHint" placeholder="es. Lato destro della strada, vicino alla chiesa." spellcheck="true"></textarea>
+        <small id="noteHint" class="form-text text-muted">Inserisci eventuali commenti da far conoscere ai mappatori che inseriranno l' indirizzo da te fornito sulla mappa.</small>
+      </div>
+
+      <!-- INVIO -->
+      <span id="acc-status"></span>
+      <span id="geo" class="mr-3 text-muted">
+        Nessuna posizione
+      </span>
+      <input value="Invia" type="submit" class="btn btn-success w-100 btn-lg mb-3">
+    </form>
+    <div id="sending-information"></div>
+    <p class="font-weight-light small text-muted mt-4">Un progetto open source sviluppato dalla comunità di <a href="https://www.openstreetmap.org/" class="badge badge-info">OpenStreetMap</a> in Italia 🇮🇹. <a href="https://github.com/naposm/indirizzo"
+        class="badge badge-dark">Contribuisci</a> a questo progetto su <a href="https://github.com/naposm/indirizzo" class="badge badge-dark">GitHub</a>.</p>
   </main>
   <!-- END OF THE MAIN CONTENT (ADDRESS FORM) -->
 
   <!-- SVG SEPARATOR - GENERATED WITH https://getwaves.io/ -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-  <path fill="#343a40" fill-opacity="1" d="M0,32L60,53.3C120,75,240,117,360,122.7C480,128,600,96,720,74.7C840,53,960,43,1080,42.7C1200,43,1320,53,1380,58.7L1440,64L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
-</svg>
+    <path fill="#343a40" fill-opacity="1" d="M0,32L60,53.3C120,75,240,117,360,122.7C480,128,600,96,720,74.7C840,53,960,43,1080,42.7C1200,43,1320,53,1380,58.7L1440,64L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+  </svg>
 
-  <!-- START OF ABOUT SECTION -->
+  <!-- START OF THE ABOUT SECTION -->
   <section id="come-funziona" class="bg-dark p-4">
     <div class="container">
       <h2 class="text-center text-white mb-4 mt-5 h1">Cosa fa questo strumento? 🤨</h2>
-      <p class="text-white-50 text-center h3">Questo strumento crea una <img src="https://wiki.openstreetmap.org/w/images/d/d0/Open_note_marker.png" alt="" class="mx-auto d-inline-block" height="30"> nota su <strong>OpenStreetMap</strong> con i dettagli dell' indirizzo che i volontari aggiungeranno poi alla mappa.<br><br>
-      👻 La nota è <u class="text-danger">totalmente anonima</u>, quindi nessuno dei volontari saprà mai chi sei nel dettaglio. <br><small>(tranne se ci scrivi tutto su di te... 🙄)</p>
-        <a href="#aggiungi" class="btn btn-primary mx-auto d-block mt-4 btn-lg mb-4">AGGIUNGI ANONIMAMENTE UN INDIRIZZO</a>
-        <hr>
+      <p class="text-white-50 text-center h3">Questo strumento crea una <img src="https://wiki.openstreetmap.org/w/images/d/d0/Open_note_marker.png" alt="" class="mx-auto d-inline-block" height="30"> nota su <strong>OpenStreetMap</strong> con i
+        dettagli dell' indirizzo che i volontari aggiungeranno poi alla mappa.<br><br>
+        👻 La nota è <u class="text-danger">totalmente anonima</u>, quindi nessuno dei volontari saprà mai chi sei nel dettaglio. <br><small>(tranne se ci scrivi tutto su di te... 🙄)</p>
+      <a href="#aggiungi" class="btn btn-primary mx-auto d-block mt-4 btn-lg mb-4">AGGIUNGI ANONIMAMENTE UN INDIRIZZO</a>
+      <hr>
       <img src="https://wiki.openstreetmap.org/w/images/7/79/Public-images-osm_logo.svg" width="100" class="img-fluid mx-auto d-block" alt="Logo di OpenStreetMap">
       <h2 class="text-center text-white mb-4 h1">Cos'è <strong>OpenStreetMap</strong>? 🤔</h2>
 
@@ -191,42 +267,70 @@
         💾 I suoi dati vengono utilizzati da molti siti e applicazioni per molti scopi.<br><br>
         Tra questi troviamo Facebook, Instagram e anche le forze di polizia. 👮</p>
 
-        <a href="https://www.youtube.com/watch?v=jeG49DxMsvw" class="btn btn-outline-light mx-auto d-block mt-4 btn-lg" target="_blank">🎞️ SCOPRI OPENSTREETMAP</a>
-<hr>
+      <a href="https://www.youtube.com/watch?v=jeG49DxMsvw" class="btn btn-outline-light mx-auto d-block mt-4 btn-lg" target="_blank">🎞️ SCOPRI OPENSTREETMAP</a>
+      <hr>
       <h2 class="text-center text-white mb-4 mt-5 h1">Perché dovrei inserire un indirizzo su <strong>OpenStreetMap</strong>? 🤷</h2>
       <p class="text-white-50 text-center h3"><strong>OpenStreetMap</strong> è utilizzato anche da tantissimi navigatori, sia per persone che
         per soccorritori. 🚒<br><br>
         🔎 Aggiungendo un indirizzo permetti agli altri di cercare te o a te di cercare gli altri.<br><br>
         Inoltre facendo ciò contribuisci ad un progetto aperto per tutti, non di una singola azienda. 🔓</p>
-        <a href="#aggiungi" class="btn btn-primary mx-auto d-block mt-4 btn-lg mb-4">AGGIUNGI UN INDIRIZZO</a>
-<hr>
-                  <h2 class="text-center text-white mb-4 mt-5 h1">Sono un mappatore anche io, come posso aiutare? 💪</h2>
-                  <p class="text-white-50 text-center h3">Se sei già un mappatore di <strong>OpenStreetMap</strong>, puoi filtrare le note su NotesReview con la query <i>AggiuntoIndirizzo</i>. Tutti i tag sono già inseriti, basterà solo mapparli!</p>
-                    <a href="https://ent8r.github.io/NotesReview/?query=AggiuntoIndirizzo" class="btn btn-danger mx-auto d-block mt-4 btn-lg mb-4">VAI ALLE NOTE</a>
+      <a href="#aggiungi" class="btn btn-primary mx-auto d-block mt-4 btn-lg mb-4">AGGIUNGI UN INDIRIZZO</a>
+      <hr>
+      <!-- SHARE WITH YOUR FRIENDS -->
+      <div class="alert alert-light text-center mt-2" role="alert">
+        <p class="h5 text-primary">Fallo sapere anche ai tuoi amici!</p>
+        <a class="resp-sharing-button__link" href="https://api.whatsapp.com/send?text=Inserisci%20anche%20tu%20il%20tuo%20indirizzo%20sul%20pi%C3%B9%20grande%20database%20aperto%20di%20mappe%20geografiche%20al%20mondo%2C%20utilizzato%20da%20Apple%2C%20Microsoft%2C%20Facebook%20e%20anche%20dai%20servizi%20di%20emergenza!%20%F0%9F%9A%81%20https%3A%2F%2Fnaposm.github.io%2Findirizzo%2F"
+          target="_blank" rel="noopener" aria-label="Share on WhatsApp">
+          <div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--large">
+            <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M20.1 3.9C17.9 1.7 15 .5 12 .5 5.8.5.7 5.6.7 11.9c0 2 .5 3.9 1.5 5.6L.6 23.4l6-1.6c1.6.9 3.5 1.3 5.4 1.3 6.3 0 11.4-5.1 11.4-11.4-.1-2.8-1.2-5.7-3.3-7.8zM12 21.4c-1.7 0-3.3-.5-4.8-1.3l-.4-.2-3.5 1 1-3.4L4 17c-1-1.5-1.4-3.2-1.4-5.1 0-5.2 4.2-9.4 9.4-9.4 2.5 0 4.9 1 6.7 2.8 1.8 1.8 2.8 4.2 2.8 6.7-.1 5.2-4.3 9.4-9.5 9.4zm5.1-7.1c-.3-.1-1.7-.9-1.9-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6s.3-.3.4-.5c.2-.1.3-.3.4-.5.1-.2 0-.4 0-.5C10 9 9.3 7.6 9 7c-.1-.4-.4-.3-.5-.3h-.6s-.4.1-.7.3c-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.3-.3-.4-.6-.5z" /></svg>
+            </div>Condividi su WhatsApp
+          </div>
+        </a>
+        <a class="resp-sharing-button__link" href="https://telegram.me/share/url?text=Inserisci%20anche%20tu%20il%20tuo%20indirizzo%20sul%20pi%C3%B9%20grande%20database%20aperto%20di%20mappe%20geografiche%20al%20mondo%2C%20utilizzato%20da%20Apple%2C%20Microsoft%2C%20Facebook%20e%20anche%20dai%20servizi%20di%20emergenza!%20%F0%9F%9A%81&amp;url=https%3A%2F%2Fnaposm.github.io%2Findirizzo%2F"
+          target="_blank" rel="noopener" aria-label="Share on Telegram">
+          <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--large">
+            <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z" /></svg>
+            </div>Condividi su Telegram
+          </div>
+        </a>
+      </div>
+      <hr>
+      <h2 class="text-center text-white mb-4 mt-5 h1">Sono un mappatore anche io, come posso aiutare? 💪</h2>
+      <p class="text-white-50 text-center h3">Se sei già un mappatore di <strong>OpenStreetMap</strong>, puoi filtrare le note su NotesReview con la query <i>AggiuntoIndirizzo</i>. Tutti i tag sono già inseriti, basterà solo mapparli!</p>
+      <a href="https://ent8r.github.io/NotesReview/?query=AggiuntoIndirizzo" class="btn btn-danger mx-auto d-block mt-4 btn-lg mb-4">VAI ALLE NOTE</a>
+      <!-- END OF THE ABOUT SECTION -->
     </div>
-    </section>
+  </section>
 
 
 
-    <!-- SCRIPTS -->
-    <script>
+  <!-- SCRIPTS -->
+  <script>
     // LEAFLET
-    var map = L.map('map').setView({lon: 8.196, lat: 42.090}, 5);
+    var map = L.map('map').setView({
+      lon: 8.196,
+      lat: 42.090
+    }, 5);
     inertia = true;
 
     // Esri world Imagery tiles http://bl.ocks.org/d3noob/8663620
     mapLink =
       '<a href="http://www.esri.com/">Esri</a>';
-  wholink =
+    wholink =
       'i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
-  L.tileLayer(
+    L.tileLayer(
       'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-      attribution: '&copy; '+mapLink+', '+wholink,
-      maxZoom: 18,
+        attribution: '&copy; ' + mapLink + ', ' + wholink,
+        maxZoom: 18,
       }).addTo(map);
 
-     // FORM CHECKER STARTER
-     sendNote();
-   </script>
+    // FORM CHECKER STARTER
+    sendNote();
+  </script>
 </body>
+
 </html>
