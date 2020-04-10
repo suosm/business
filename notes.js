@@ -11,7 +11,7 @@ function sendNote(){
 		      if($("#civico").val()=="") {alert("Il Campo Numero civico non può essere vuoto");return false;}
 
 		      //Creazione testo da inserire nella nota
-		      var testo="Indirizzo:"
+		      var testo="node\n"
 		        +"\naddr:street="+$("#strada").val()
 			+"\naddr:housenumber="+$("#civico").val()
 			+"\naddr:city="+$("#comune").val()
