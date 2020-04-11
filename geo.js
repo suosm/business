@@ -21,7 +21,7 @@ function stopLocation(){
     if (navigator.geolocation)
     {
       posID = navigator.geolocation.watchPosition(getDataFromGPS,showError,{enableHighAccuracy:true,timeout:240000});
-      $("#geo-information").html('<div class="alert alert-dark text-center" role="alert">🕵️‍ Ti stiamo localizzando... <div class="spinner-border spinner-border-sm float-right" role="status"></div></div>');
+      $("#geo-information").html('<div class="alert alert-info text-center" role="alert">🕵️‍ Ti stiamo localizzando... <div class="spinner-border spinner-border-sm float-right" role="status"></div></div>');
     }
     else{$("#geo-information").html('<div class="alert alert-danger" role="alert">😔 Il tuo browser non supporta la geolocalizzazione.</div>');}
   }
@@ -44,7 +44,7 @@ function showError(error)
 
 // Ottiene i dati dal GPS
 function getDataFromGPS(position){
-  $("#geo-information").html('<div class="alert alert-dark text-center" role="alert">⌛‍ Aggiornamento... <div class="spinner-grow spinner-grow-sm float-right" role="status"></div></div>');
+  $("#geo-information").html('<div class="alert alert-info text-center" role="alert">⌛‍ Aggiornamento... <div class="spinner-grow spinner-grow-sm float-right" role="status"></div></div>');
   truelat = position.coords.latitude;
   truelon = position.coords.longitude;
   updateData(truelat, truelon, position.coords.accuracy);
@@ -77,12 +77,14 @@ map.addLayer(marker);
 
 // Aggiunge marker al click e ferma la localizzazione
 function addMarkerClick(e){
-  maxDist = .5 / 110.574;
+  maxDist = 0.5 / 110.574;
   distGPStoSelection = Math.sqrt(Math.pow(e.latlng.lat - truelat, 2) + Math.pow(e.latlng.lng - truelon, 2));
 // Controlla se la distanza non è eccessiva
   if(distGPStoSelection <= maxDist && stato == 1){
     updateData(e.latlng.lat, e.latlng.lng);
     stopLocation();
+} else if (distGPStoSelection <= maxDist){
+  $("#geo-information").html('<div class="alert alert-info text-center" role="alert">✋ Attendi che l\' accuratezza migliori prima di selezionare la posizione dalla mappa manualmente.<div class="spinner-grow spinner-grow-sm float-right" role="status"></div></div>');
 }
  }
 
@@ -97,7 +99,7 @@ function showPosition()
 
   //visualizza i dati nel div con id geo
   var text_pos = "Lat: " + lat + " Lon: " + lon;
-  (typeof acc != 'undefined') ? text_pos += " Accuratezza: "+ Math.round(acc) + "m" : text_pos += " [Selezionato sulla mappa]";
+  (typeof acc != 'undefined') ? text_pos += " Accuratezza: "+ Math.round(acc) + "m" : text_pos += '<span class="text-danger"> [Selezionato sulla mappa]</span>';
   $("#geo").html(text_pos);
 
   // Gestisce i tre stati rispetto all'accuratezza
