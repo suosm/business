@@ -61,8 +61,11 @@ if (typeof marker != "undefined") {
   map.setView([lat, lon], 18);
 }
 marker = new L.Marker([lat, lon])
-if (typeof acc != 'undefined')
-  .bindPopup('Sei a circa '+ acc + 'm da qui');
+if (typeof acc != 'undefined'){
+  marker.bindPopup('Sei a circa '+ acc + 'm da qui');
+} else {
+  marker.bindPopup('Selezionato da te sulla mappa');
+}
 map.addLayer(marker);
 }
 
