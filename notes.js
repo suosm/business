@@ -4,7 +4,7 @@ function sendNote(){
   $('#form').submit(function(event){
     event.preventDefault();
     // non permette di inviare i dati se l'accuratezza supera i 20m
-    if (stato==0) $("#sending-information").html('<div class="alert alert-warning" role="alert">🛰️ Attendi che l\' accuratezza della posizione migliori, la spia da 🔴 rossa deve diventare 🟡 gialla o ancora meglio 🟢 verde!</div>');
+    if (stato==0) $("#sending-information").html('<div class="alert alert-warning" role="alert">🛰️ Attendi che l\' accuratezza della posizione migliori, la spia da rossa o gialla deve diventare 🟢 verde!</div>');
 		    else {
 
 		      // Verifica Dei Campi

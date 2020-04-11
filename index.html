@@ -40,6 +40,8 @@
   <!-- STYLES -->
   <!-- BOOTSTRAP -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- ANIMATE.CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
   <!-- CUSTOM STYLES -->
   <style>
     #geo-information, #sending-information {min-height: 50px;}
@@ -174,7 +176,10 @@
     <h2 class="h3">1. Aggiungi la tua posizione</h2>
     <!-- MAP -->
     <div id="map"></div>
-
+    <span id="acc-status"></span>
+    <span id="geo" class="mr-3 text-muted">
+      Nessuna posizione
+    </span>
     <!-- LOCALIZE ME BUTTON -->
     <button class="btn btn-primary w-100 mt-2" onclick="getLocation()"><img src="position.svg" width="20" class="mr-2" alt="">LOCALIZZAMI</button>
     <!-- LOCALIZATION INFORMATION -->
@@ -234,11 +239,7 @@
       </div>
 
       <!-- INVIO -->
-      <span id="acc-status"></span>
-      <span id="geo" class="mr-3 text-muted">
-        Nessuna posizione
-      </span>
-      <input value="Invia" type="submit" class="btn btn-success w-100 btn-lg mb-3">
+    <input value="Invia" type="submit" class="btn btn-success w-100 btn-lg mb-3">
     </form>
     <div id="sending-information"></div>
     <p class="font-weight-light small text-muted mt-4">Un progetto open source sviluppato dalla comunità di <a href="https://www.openstreetmap.org/" class="badge badge-info">OpenStreetMap</a> in Italia 🇮🇹. <a href="https://github.com/naposm/indirizzo"

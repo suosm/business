@@ -6,14 +6,15 @@ var truelat;
 var truelon;
 var distGPStoSelection = 0;
 var marker;
+var pos;
 
   //Recupera le coordinate dal device
   function getLocation()
   {
     if (navigator.geolocation)
     {
-      navigator.geolocation.watchPosition(getDataFromGPS,showError,{enableHighAccuracy:true,timeout:240000});
-      $("#geo-information").html('<div class="alert alert-success text-center" role="alert">🙌 Geolocalizzazione avvenuta con successo! 🙌</div>');
+      pos = navigator.geolocation.watchPosition(getDataFromGPS,showError,{enableHighAccuracy:true,timeout:240000});
+      $("#geo-information").html('<div class="alert alert-dark text-center" role="alert">🕵️‍ Ti stiamo localizzando... <div class="spinner-border spinner-border-sm float-right" role="status"></div></div>');
     }
     else{$("#geo-information").html('<div class="alert alert-danger" role="alert">😔 Il tuo browser non supporta la geolocalizzazione.</div>');}
   }
@@ -21,24 +22,27 @@ var marker;
 function showError(error)
 {
   var text;
+  var animation;
+  (error.code > 1) ? animation = "animated shake" : animation = " ";
   switch (error.code){
   case 1 : text = '🥺 Non hai consentito l\' accesso alla posizione. Se hai dubbi sulla privacy, consulta le <a href="#come-funziona">informazioni</a> in fondo. ⬇️'; break;
   case 2 : text = "📡 Qualcosa non ha funzionato... Riprova più tardi."; break;
   case 3 : text = "💤 L' accesso alla posizione sta impiegando più tempo del previsto."; break;
   default : text = "😨 Errore nella localizzazione.";
 }
-  $("#geo-information").html('<div class="alert alert-danger" role="alert">'+ text +'</div>');
+  $("#geo-information").html('<div class="alert alert-danger ' + animation + '" role="alert">'+ text +'</div>');
 }
 
 // Ferma la posizione
 function stopLocation(){
-  navigator.geolocation.clearWatch();
+  navigator.geolocation.clearWatch(pos);
   $("#geo-information").html('<div class="alert alert-dark text-center" role="alert">📌 Modalità selezione manuale, la geolocalizzazione è in pausa. 🛑 </div>');
 }
 
 
 // Ottiene i dati dal GPS
 function getDataFromGPS(position){
+    $("#geo-information").html('<div class="alert alert-dark text-center" role="alert">⌛‍ Aggiornamento... <div class="spinner-grow spinner-grow-sm float-right" role="status"></div></div>');
   truelat = position.coords.latitude;
   truelon = position.coords.longitude;
   updateData(truelat, truelon, position.coords.accuracy);
@@ -98,4 +102,13 @@ function showPosition()
   if (acc>35) { $("#acc-status").css("background-color","#b60e0e"); stato=0;}
   if (acc<=35 && acc>20) { $("#acc-status").css("background-color","#c7b51f");stato=0;}
   if (acc<=20) { $("#acc-status").css("background-color","#2ac417"); stato=1;}
+
+  if (stato == 0){
+    $("#geo-information").html('<div class="alert alert-warning text-center" role="alert">⚠️ L\' accuratezza della tua posizione non è ottimale... Attendi che la spia diventi verde prima di proseguire. 👴</div>');
+    $("#acc-status").addClass("animated delay-2s flash fast infinite");
+  } else {
+    var text;
+    if (acc <=20 && acc > 10) { text = "👍 La geolocalizzazione è avvenuta con successo! L' accuratezza è abbastanza buona." } else if (acc<=10 && acc > 5) {text = " La geolocalizzazione è avvenuta con successo! Dovresti essere a circa "+ acc +"m da qui 🤗"} else {text = "🎯 Perfetto! La geolocalizzazione è avvenuta con successo! 🎉"}
+    $("#geo-information").html('<div class="alert alert-success text-center" role="alert">'+ text +'</div>');
+  }
   }
