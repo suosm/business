@@ -61,7 +61,8 @@ if (typeof marker != "undefined") {
   map.setView([lat, lon], 18);
 }
 marker = new L.Marker([lat, lon])
-.bindPopup('Sei a circa '+ acc + 'm da qui');
+if (typeof acc != 'undefined')
+  .bindPopup('Sei a circa '+ acc + 'm da qui');
 map.addLayer(marker);
 }
 
@@ -73,8 +74,6 @@ function addMarkerClick(e){
   if(distGPStoSelection <= maxDist){
     updateData(e.latlng.lat, e.latlng.lng);
     stopLocation();
-} else {
-  console.log("NOOO, " + (Math.sqrt(Math.pow(e.latlng.lat - lat, 2) + Math.pow(e.latlng.lng - lon, 2))));
 }
  }
 
