@@ -112,7 +112,7 @@ function showPosition()
     $("#acc-status").addClass("animated delay-2s flash fast infinite");
   } else {
     var text;
-    if (acc <=20 && acc > 10) { text = "👍 La geolocalizzazione è avvenuta con successo! <b>L' accuratezza è abbastanza buona.</b>";} else if (acc<=10 && acc > 5) {text = "🙌 La geolocalizzazione è avvenuta con successo! Dovresti essere a circa "+ Math.round(acc) +"m da qui 🤗";} else {text = "🎯 Perfetto! La geolocalizzazione è avvenuta con successo! 🎉";}
+    if (acc <=20 && acc > 10) { text = "👍 La geolocalizzazione è avvenuta con successo! <b>L' accuratezza è abbastanza buona.</b>";} else if (acc<=10 && acc > 5) {text = "🙌 La geolocalizzazione è avvenuta con successo! Dovresti essere a circa "+ Math.round(acc) +"m da qui 🤗";} else {text = "🎯 Perfetto! La geolocalizzazione è avvenuta con successo! 🎉"; stopLocation();}
     $("#geo-information").html('<div class="alert alert-success text-center" role="alert">'+ text +'</div><small>Clicca sulla mappa per selezionare la posizione giusta.</small>');
     $("#acc-status").removeClass("animated delay-2s flash fast infinite");
   }
