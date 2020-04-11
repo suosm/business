@@ -80,7 +80,7 @@ map.addLayer(marker);
 
 // Aggiunge marker al click e ferma la localizzazione
 function addMarkerClick(e){
-  maxDist = 0.5 / 110.574;
+  maxDist = 0.8 / 110.574;
   distGPStoSelection = Math.sqrt(Math.pow(e.latlng.lat - truelat, 2) + Math.pow(e.latlng.lng - truelon, 2));
 // Controlla se la distanza non è eccessiva
   if(distGPStoSelection <= maxDist && stato == 1){
@@ -89,7 +89,7 @@ function addMarkerClick(e){
     $("#geo-information").html('<div class="alert alert-dark text-center" role="alert">📌 Modalità selezione manuale, la geolocalizzazione è in pausa. 🛑 </div>');
 } else if (distGPStoSelection <= maxDist){
   $("#geo-information").html('<div class="alert alert-info text-center" role="alert">✋ Attendi che l\' accuratezza migliori prima di selezionare la posizione dalla mappa manualmente.<div class="spinner-grow spinner-grow-sm float-right" role="status"></div></div>');
-} else {
+} else if (stato == 1) {
     $("#geo-information").html('<div class="alert alert-danger text-center" role="alert">✋ Non puoi selezionare un punto così distante dalla tua posizione attuale.');
 }
  }
