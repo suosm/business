@@ -12,7 +12,8 @@ var posID;
 // Ferma la posizione
 function stopLocation(){
   navigator.geolocation.clearWatch(posID);
-  $("#geo-information").html('<div class="alert alert-dark text-center" role="alert">📌 Modalità selezione manuale, la geolocalizzazione è in pausa. 🛑 </div>');
+  $("#pos-button").removeClass("disabled");
+  $("#pos-img").removeClass("animated flash slower infinite");
 }
 
   //Recupera le coordinate dal device
@@ -22,6 +23,8 @@ function stopLocation(){
     {
       posID = navigator.geolocation.watchPosition(getDataFromGPS,showError,{enableHighAccuracy:true,timeout:240000});
       $("#geo-information").html('<div class="alert alert-info text-center" role="alert">🕵️‍ Ti stiamo localizzando... <div class="spinner-border spinner-border-sm float-right" role="status"></div></div>');
+      $("#pos-button").addClass("disabled");
+      $("#pos-img").addClass("animated flash slower infinite");
     }
     else{$("#geo-information").html('<div class="alert alert-danger" role="alert">😔 Il tuo browser non supporta la geolocalizzazione.</div>');}
   }
@@ -33,7 +36,7 @@ function showError(error)
   (error.code > 1) ? animation = "animated shake" : animation = " ";
   switch (error.code){
   case 1 : text = '🥺 Non hai consentito l\' accesso alla posizione. Se hai dubbi sulla privacy, consulta le <a href="#come-funziona">informazioni</a> in fondo. ⬇️'; break;
-  case 2 : text = "📡 Qualcosa non ha funzionato... Riprova più tardi."; break;
+  case 2 : text = "📡 Qualcosa non ha funzionato... Riprova più tardi. <b>Controlla di avere il GPS attivo</b>."; break;
   case 3 : text = "💤 L' accesso alla posizione sta impiegando più tempo del previsto."; break;
   default : text = "😨 Errore nella localizzazione.";
 }
@@ -83,6 +86,7 @@ function addMarkerClick(e){
   if(distGPStoSelection <= maxDist && stato == 1){
     updateData(e.latlng.lat, e.latlng.lng);
     stopLocation();
+    $("#geo-information").html('<div class="alert alert-dark text-center" role="alert">📌 Modalità selezione manuale, la geolocalizzazione è in pausa. 🛑 </div>');
 } else if (distGPStoSelection <= maxDist){
   $("#geo-information").html('<div class="alert alert-info text-center" role="alert">✋ Attendi che l\' accuratezza migliori prima di selezionare la posizione dalla mappa manualmente.<div class="spinner-grow spinner-grow-sm float-right" role="status"></div></div>');
 }
@@ -101,7 +105,6 @@ function showPosition()
   var text_pos = "Lat: " + lat + " Lon: " + lon;
   (typeof acc != 'undefined') ? text_pos += " Accuratezza: "+ Math.round(acc) + "m" : text_pos += '<span class="text-danger"> [Selezionato sulla mappa]</span>';
   $("#geo").html(text_pos);
-
   // Gestisce i tre stati rispetto all'accuratezza
   if (acc>35) { $("#acc-status").css("background-color","#b60e0e"); stato=0;}
   if (acc<=35 && acc>20) { $("#acc-status").css("background-color","#c7b51f");stato=0;}
@@ -112,8 +115,8 @@ function showPosition()
     $("#acc-status").addClass("animated delay-2s flash fast infinite");
   } else {
     var text;
-    if (acc <=20 && acc > 10) { text = "👍 La geolocalizzazione è avvenuta con successo! <b>L' accuratezza è abbastanza buona.</b>";} else if (acc<=10 && acc > 5) {text = "🙌 La geolocalizzazione è avvenuta con successo! Dovresti essere a circa "+ Math.round(acc) +"m da qui 🤗";} else {text = "🎯 Perfetto! La geolocalizzazione è avvenuta con successo! 🎉"; stopLocation();}
-    $("#geo-information").html('<div class="alert alert-success text-center" role="alert">'+ text +'</div><small>Clicca sulla mappa per selezionare la posizione giusta.</small>');
+    if (acc <=20 && acc > 10) { text = "👍 La geolocalizzazione è avvenuta con successo! <b>L' accuratezza è abbastanza buona.</b>";} else if (acc<=10 && acc > 5) {text = "🙌 La geolocalizzazione è avvenuta con successo! Dovresti essere a circa "+ Math.round(acc) +"m da qui 🤗"; stopLocation();} else {text = "🎯 Perfetto! La geolocalizzazione è avvenuta con successo! 🎉"; stopLocation();}
+    $("#geo-information").html('<div class="alert alert-success text-center" role="alert">'+ text +'<br><small>Clicca sulla mappa per selezionare la posizione giusta.</small></div>');
     $("#acc-status").removeClass("animated delay-2s flash fast infinite");
   }
   }
