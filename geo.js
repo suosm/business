@@ -71,7 +71,7 @@ if (typeof marker != "undefined") {
 }
 marker = new L.Marker([lat, lon]);
 if (typeof acc != 'undefined'){
-  marker.bindPopup('Sei a circa '+ acc + 'm da qui');
+  marker.bindPopup('Sei a circa '+ Math.round(acc) + 'm da qui');
 } else {
   marker.bindPopup('Selezionato da te sulla mappa');
 }
@@ -89,6 +89,8 @@ function addMarkerClick(e){
     $("#geo-information").html('<div class="alert alert-dark text-center" role="alert">📌 Modalità selezione manuale, la geolocalizzazione è in pausa. 🛑 </div>');
 } else if (distGPStoSelection <= maxDist){
   $("#geo-information").html('<div class="alert alert-info text-center" role="alert">✋ Attendi che l\' accuratezza migliori prima di selezionare la posizione dalla mappa manualmente.<div class="spinner-grow spinner-grow-sm float-right" role="status"></div></div>');
+} else {
+    $("#geo-information").html('<div class="alert alert-danger text-center" role="alert">✋ Non puoi selezionare un punto così distante dalla tua posizione attuale.');
 }
  }
 
