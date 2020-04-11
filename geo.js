@@ -77,10 +77,10 @@ map.addLayer(marker);
 
 // Aggiunge marker al click e ferma la localizzazione
 function addMarkerClick(e){
-  maxDist = 1 / 110.574;
+  maxDist = .5 / 110.574;
   distGPStoSelection = Math.sqrt(Math.pow(e.latlng.lat - truelat, 2) + Math.pow(e.latlng.lng - truelon, 2));
 // Controlla se la distanza non è eccessiva
-  if(distGPStoSelection <= maxDist){
+  if(distGPStoSelection <= maxDist && stato == 1){
     updateData(e.latlng.lat, e.latlng.lng);
     stopLocation();
 }
@@ -111,7 +111,7 @@ function showPosition()
   } else {
     var text;
     if (acc <=20 && acc > 10) { text = "👍 La geolocalizzazione è avvenuta con successo! <b>L' accuratezza è abbastanza buona.</b>";} else if (acc<=10 && acc > 5) {text = "🙌 La geolocalizzazione è avvenuta con successo! Dovresti essere a circa "+ Math.round(acc) +"m da qui 🤗";} else {text = "🎯 Perfetto! La geolocalizzazione è avvenuta con successo! 🎉";}
-    $("#geo-information").html('<div class="alert alert-success text-center" role="alert">'+ text +'</div>');
+    $("#geo-information").html('<div class="alert alert-success text-center" role="alert">'+ text +'</div><small>Clicca sulla mappa per selezionare la posizione giusta.</small>');
     $("#acc-status").removeClass("animated delay-2s flash fast infinite");
   }
   }
