@@ -9,6 +9,13 @@ var marker;
 var posID;
 
 
+// Ferma la posizione
+function stopLocation(){
+  navigator.geolocation.clearWatch(posID);
+  $("#pos-button").removeClass("disabled");
+  $("#pos-img").removeClass("animated flash slower infinite");
+}
+
   //Recupera le coordinate dal device
   function getLocation()
   {
@@ -36,12 +43,7 @@ function showError(error)
   $("#geo-information").html('<div class="alert alert-danger ' + animation + '" role="alert">'+ text +'</div>');
 }
 
-// Ferma la posizione
-function stopLocation(){
-  navigator.geolocation.clearWatch(posID);
-  $("#pos-button").removeClass("disabled");
-  $("#pos-img").removeClass("animated flash slower infinite");
-}
+
 
 // Ottiene i dati dal GPS
 function getDataFromGPS(position){
