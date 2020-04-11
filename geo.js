@@ -90,7 +90,9 @@ function showPosition()
 
 
   //visualizza i dati nel div con id geo
-  $("#geo").html("Lat: " + lat + " Lon: " + lon +" Accuratezza: "+ acc);
+  var text_pos = "Lat: " + lat + " Lon: " + lon;
+  (typeof acc != 'undefined') ? text_pos += " Accuratezza: "+ acc + "m" : text_pos += " [Selezionato sulla mappa]";
+  $("#geo").html(text_pos);
 
   // Gestisce i tre stati rispetto all'accuratezza
   if (acc>35) { $("#acc-status").css("background-color","#b60e0e"); stato=0;}
