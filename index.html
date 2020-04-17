@@ -44,7 +44,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
   <!-- CUSTOM STYLES -->
   <style>
-    #geo-information, #sending-information {min-height: 50px;}
+  html {scroll-behavior: smooth;}
+  #geo-information, #sending-information {min-height: 50px;}
   #map { height: 250px; }
   #acc-status { width: 10px; height: 10px; border-radius: 100%; border: 1px solid #383434; background-color: #8f8f8f; display: inline-block;}
   /** FROM 30 seconds of CSS - https://www.30secondsofcode.org/css/s/border-with-top-triangle/*/
@@ -156,7 +157,10 @@
     </h1>
     <p class="text-muted h6 text-center">Aggiungi velocemente un indirizzo su 🗺️ OpenStreetMap. Servono solo un 📱 dispositivo dotato di GPS e ⏱️ un paio di minuti!</p>
     <div class="text-center">
-      <a href="#come-funziona" class="btn btn-outline-info mx-auto ">Informazioni</a>
+      <a href="#come-funziona" class="btn btn-outline-primary mx-auto mt-2">Come funziona?</a>
+      <a href="#negozi" class="btn btn-outline-secondary mx-auto mt-2">Hai un negozio?</a>
+      <a href="#openstreetmap" class="btn btn-outline-info mx-auto mt-2">Cos'è OpenStreetMap?</a>
+      <a href="#privacy" class="btn btn-outline-info mx-auto mt-2">Privacy</a>
     </div>
     <!-- NO JAVASCRIPT ALERT -->
     <noscript>
@@ -253,22 +257,30 @@
   </svg>
 
   <!-- START OF THE ABOUT SECTION -->
-  <section id="come-funziona" class="bg-dark p-4">
+  <section class="bg-dark p-4">
     <div class="container">
-      <h2 class="text-center text-white mb-4 mt-5 h1">Cosa fa questo strumento? 🤨</h2>
+      <h2 class="text-center text-white mb-4 mt-5 h1" id="come-funziona">Cosa fa questo strumento? 🤨</h2>
       <p class="text-white-50 text-center h3">Questo strumento crea una <img src="https://wiki.openstreetmap.org/w/images/d/d0/Open_note_marker.png" alt="" class="mx-auto d-inline-block" height="30"> nota su <strong>OpenStreetMap</strong> con i
         dettagli dell' indirizzo che i volontari aggiungeranno poi alla mappa.<br><br>
         👻 La nota è <u class="text-danger">totalmente anonima</u>, quindi nessuno dei volontari saprà mai chi sei nel dettaglio. <br><small>(tranne se ci scrivi tutto su di te... 🙄)</p>
       <a href="#aggiungi" class="btn btn-primary mx-auto d-block mt-4 btn-lg mb-4">AGGIUNGI ANONIMAMENTE UN INDIRIZZO</a>
       <hr>
+      <h2 class="text-center text-white mb-4 mt-5 h1" id="privacy">Ehm..privacy? <a class="nodecoration" href="https://www.reddit.com/r/italy/comments/fxy4ls/aiuta_il_112_a_trovarti_in_casi_di_emergenza/fmx6229/" target="_blank" rel="noopener" title="😘">🔒</a></h2>
+      <p class="text-white-50 text-center h3">I dati da te inseriti vengono direttamente inviati su <strong>OpenStreetMap</strong> in totale anonimato, senza inserire nomi, cognomi, email, password, codici fiscali, gruppi sanguigni...<br> Insomma viene fatto tutto in modo diretto 🚀<br><br>
+      🕳️ I tuoi dati non vengono salvati da nessuna altra parte e non tratteniamo alcun dato che ci invii su questo sito.<br><br>
+      Inoltre non abbiamo strumenti di analisi e quindi tutto ciò che fai qui resta solo e soltanto qui. 🙅<br><br>
+      📍 La localizzazione? Il tuo browser dovrebbe annullare la geolocalizzazione alla chiusura della scheda. In ogni caso noi la disattiviamo appena la tua posizione viene trovata con un' accuratezza abbastanza buona.
+      </p>
+      <a href="#aggiungi" class="btn btn-primary mx-auto d-block mt-4 btn-lg mb-4">AGGIUNGI UN INDIRIZZO</a>
+      <hr>
       <img src="https://wiki.openstreetmap.org/w/images/7/79/Public-images-osm_logo.svg" width="100" class="img-fluid mx-auto d-block" alt="Logo di OpenStreetMap">
-      <h2 class="text-center text-white mb-4 h1">Cos'è <strong>OpenStreetMap</strong>? 🤔</h2>
+      <h2 class="text-center text-white mb-4 h1" id="openstreetmap">Cos'è <strong>OpenStreetMap</strong>? 🤔</h2>
 
       <p class="text-white-50 text-center h3"><strong>OpenStreetMap</strong> è un database geografico aperto. 👐<br><br>
         💾 I suoi dati vengono utilizzati da molti siti e applicazioni per molti scopi.<br><br>
-        Tra questi troviamo Facebook, Instagram e anche le forze di polizia. 👮</p>
+        Tra questi troviamo Facebook, Instagram e anche le Forze di Polizia. 👮</p>
 
-      <a href="https://www.youtube.com/watch?v=jeG49DxMsvw" class="btn btn-outline-light mx-auto d-block mt-4 btn-lg" target="_blank">🎞️ SCOPRI OPENSTREETMAP</a>
+      <a href="https://www.youtube.com/watch?v=jeG49DxMsvw" class="btn btn-outline-light mx-auto d-block mt-4 btn-lg" target="_blank" rel="noopener">🎞️ SCOPRI OPENSTREETMAP</a>
       <hr>
       <h2 class="text-center text-white mb-4 mt-5 h1">Perché dovrei inserire un indirizzo su <strong>OpenStreetMap</strong>? 🤷</h2>
       <p class="text-white-50 text-center h3"><strong>OpenStreetMap</strong> è utilizzato anche da tantissimi navigatori, sia per persone che
@@ -300,9 +312,13 @@
         </a>
       </div>
       <hr>
+      <h2 class="text-center text-white mb-4 mt-5 h1" id="negozi">Ho un' attività commerciale, come posso inserirla? 🏪</h2>
+      <p class="text-white-50 text-center h3">Se hai un negozio o un' attività puoi inserirli su <strong>OpenStreetMap</strong> e rederli visibili su tantissime mappe. Basta aggiungere i dati sul sito <a href="https://su.openstreetmap.it" class="nodecoration">su.openstreetmap.it</a>.</p>
+      <a href="https://su.openstreetmap.it" class="btn btn-danger mx-auto d-block mt-4 btn-lg mb-4">AGGIUNGI LA TUA ATTIVITÀ</a>
+      <hr>
       <h2 class="text-center text-white mb-4 mt-5 h1">Sono un mappatore anche io, come posso aiutare? 💪</h2>
       <p class="text-white-50 text-center h3">Se sei già un mappatore di <strong>OpenStreetMap</strong>, puoi filtrare le note su NotesReview con la query <i>AggiuntoIndirizzo</i>. Tutti i tag sono già inseriti, basterà solo mapparli!</p>
-      <a href="https://ent8r.github.io/NotesReview/?query=AggiuntoIndirizzo" class="btn btn-danger mx-auto d-block mt-4 btn-lg mb-4">VAI ALLE NOTE</a>
+      <a href="https://ent8r.github.io/NotesReview/?query=AggiuntoIndirizzo" class="btn btn-info mx-auto d-block mt-4 btn-lg mb-4">VAI ALLE NOTE</a>
       <!-- END OF THE ABOUT SECTION -->
     </div>
   </section>
