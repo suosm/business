@@ -7,13 +7,39 @@ var truelon;
 var distGPStoSelection = 0;
 var marker;
 var posID;
+var nopostcode = false;
 
+// Ottiene l' inserimento automatico dell' indirizzo
+function getDataFromNominatim(lat, lon){
+  var request = "https://nominatim.openstreetmap.org/reverse?lat=" + lat + "&lon=" + lon + "&format=jsonv2&accept-language=it&zoom=10&namedetails=1";
+  $.getJSON( request, function( data ) {
+    // Inserisce istruzioni sull' indirizzo a seconda della regione
+    switch (data.address.state){
+      case "Trentino-Alto Adige" : $("#stradaMex").html("🌐 Se il tuo comune è multilingua, <b>inserisci il nome della strada in tutte le lingue parlate</b>, partendo da quella più utilizzata a quella meno utilizzata in questo formato <b>\"Nome1 - Nome2 - Nome 3\"</b> (es. Maiastraße - Via Maia)"); $('#comuneMex').html("🌐 Anche qui, come prima, <b>inserisci il nome in tutte lingue parlate</b> nel formato <b>\"Nome1 - Nome2 - Nome 3\"</b> (es. Urtijëi - St. Ulrich - Ortisei).<br>"); break;
+      case "Sardegna" : $("#comuneMex").html("🌐 <b>Inserisci il nome della città sia nella lingua italiana che in quella locale</b> in questo modo <b>\"Nome locale/Nome italiano\"</b> (es. Nùgoro/Nuoro).<br>"); break;
+      default : $("#comuneMex").html("");
+    }
+
+    // Inserisce città e CAP da Nominatim
+  if(data.address.city != "")
+    $('#comune').val(data.namedetails.name);
+  if(typeof data.address.postcode != "undefined"){
+    $('#cap').val(data.address.postcode);
+  } else {
+    $('#cap').val("");
+    // Inserisce avviso "Manca l' indirizzo postale"
+    $("#capMex").html('<div class="alert alert-warning small" role="alert"> ✉️ A quanto pare sul nostro database non abbiamo il CAP di questa città, probabilmente nessuno ce lo ha mai segnalato. 😓 Ci farebbe molto piacere conoscerlo! </div>');
+    nopostcode = true;
+  }
+ });
+}
 
 // Ferma la posizione
 function stopLocation(){
   navigator.geolocation.clearWatch(posID);
   $("#pos-button").removeClass("disabled");
   $("#pos-img").removeClass("animated flash slower infinite");
+  getDataFromNominatim(lat, lon);
 }
 
   //Recupera le coordinate dal device
@@ -29,6 +55,7 @@ function stopLocation(){
     else{$("#geo-information").html('<div class="alert alert-danger" role="alert">😔 Il tuo browser non supporta la geolocalizzazione.</div>');}
   }
 
+// Mostra i messaggi di errore
 function showError(error)
 {
   var text;

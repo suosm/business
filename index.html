@@ -8,6 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Aggiungi un indirizzo su OpenStreetMap</title>
   <meta name="description" content="Aggiungi velocemente un indirizzo sulle mappe di OpenStreetMap utilizzando il GPS del tuo dispositivo! Crea una mappa libera per tutti! 🗺️">
+  <link rel="author" href="humans.txt" />
   <!-- FAVICON -->
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -201,10 +202,10 @@
         <!-- NOME DELLA STRADA ACCETTA COME PATTERN UNA REGEX CON LETERE LATINE, NUMERI (ANCHE ROMANI), TRATTINI, PUNTI E LETTERE FRANCESI E TEDESCHE (PER I PAESI AL CONFINE) PER EVITARE NOMI NON CORRETTI-->
         <div class="form-group col">
           <label for="strada">Nome della strada</label> <span class="badge badge-danger">Necessario</span>
-          <input type="text" pattern="[A-Za-z0-9IVXLCDMßÜüÖöÄäàâçæéèêëïîôœùûüÿÀÂÇÆÉÈÊËÏÎÔŒÙÛÜŸ\-\. ']+" class="form-control" name="strada" id="strada" aria-describedby="stradaHint" placeholder="es. Via Roma" required>
+          <input type="text" pattern="[A-Za-z0-9IVXLCDMßÜüÖöÄäàâçæéèêëïîôœùûüÿÀÂÇÆÉÈÊËÏÎÔŒÙÛÜŸ\-\. '°/]+" class="form-control" name="strada" id="strada" aria-describedby="stradaHint" placeholder="es. Via Roma" required>
           <small id="stradaHint" class="form-text text-muted">Inserisci il nome della strada in cui si trova l' edificio, senza civico.</small>
 
-          <div class="alert alert-primary small" role="alert">
+          <div class="alert alert-primary small" role="alert" id="stradaMex">
             📜 Inserisci il nome completo della strada, senza abbreviazioni.<br>Sono consentiti soltanto caratteri latini con lettere francesi e tedesche, numeri e alcuni simboli.
           </div>
         </div>
@@ -222,10 +223,10 @@
         <div class="form-group col-md-6">
           <!-- COMUNE ACCETTA LETTERE E PARENTESI TONDE, DA ALCUNI CELLULARI L' AUTOCOMPLETAMENTO PROVA A SUGGERIRE L' INDIRIZZO -->
           <label for="comune">Comune</label> <span class="badge badge-danger">Necessario</span>
-          <input type="text" pattern="[A-Za-zßÜüÖöÄäàâçæéèêëïîôœùûüÿÀÂÇÆÉÈÊËÏÎÔŒÙÛÜŸ\-\. ']+" class="form-control" name="comune" id="comune" placeholder="es. Pietrelcina" autocomplete="address-level2" aria-describedby="stradaHint" required>
+          <input type="text" pattern="[A-Za-zßÜüÖöÄäàâçæéèêëïîôœùûüÿÀÂÇÆÉÈÊËÏÎÔŒÙÛÜŸ\-\. '/]+" class="form-control" name="comune" id="comune" placeholder="es. Pietrelcina" autocomplete="address-level2" aria-describedby="stradaHint" required>
           <small id="civicoHint" class="form-text text-muted">Inserisci il comune in cui si trova la strada, senza provincia.</small>
           <div class="alert alert-primary small" role="alert">
-            ⚔️ Se la strada è condivisa da più comuni o se ha nomi diversi a seconda del comune, puoi scrivere tutto nel campo "Note".
+            <span id="comuneMex"></span>⚔️ Se la strada è condivisa da più comuni o se ha nomi diversi a seconda del comune, puoi scrivere tutto nel campo "Note".
           </div>
         </div>
         <!-- CAP ACCETTA SOLO NUMERI E DI 5 CIFRE, ALCUNI DISPOSITIVI POTREBBERO SUGGERIRE L' AUTOCOMPLETAMENTO - ALCUNI DISPOSITIVI POTREBBERO MOSTRARE LA TASTIERA COMPLETA (FACOLTATIVO) -->
@@ -233,6 +234,7 @@
           <label for="cap"><abbr title="Codice di avviamento postale">CAP</abbr></label> <span class="badge badge-light">Facoltativo</span>
           <input type="text" pattern="[0-9]{5}" class="form-control" name="cap" id="cap" placeholder="es. 82020" inputmode="numeric" autocomplete="postal-code" aria-describedby="capHint">
           <small id="capHint" class="form-text text-muted">Inserisci il codice di avviamento postale a 5 cifre del comune. Sono consentiti solo numeri.</small>
+          <div id="capMex"></div>
         </div>
       </div>
       <!-- NOTE È UNA TEXTAREA CHE ACCETTA QUALSIASI TIPO DI CARATTERE (FACOLTATIVO) -->

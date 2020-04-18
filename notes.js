@@ -1,9 +1,10 @@
 var share_text = 'Ho appena inserito il mio indirizzo su OpenStreetMap, il database geografico utilizzato da tantissime applicazioni! 🗺 Puoi farlo anche tu, se vuoi. Sostieni un progetto libero e di tutta la comunità ❤️';
-var share_url = "https://naposm.github.io/indirizzo/"
+var share_url = "https://naposm.github.io/indirizzo/";
 
 function sendNote() {
   $('#form').submit(function(event) {
     event.preventDefault();
+
     // non permette di inviare i dati se l'accuratezza supera i 20m
     if (stato == 0) $("#sending-information").html('<div class="alert alert-warning" role="alert">🛰️ Attendi che l\' accuratezza della posizione migliori, la spia da rossa o gialla deve diventare 🟢 verde!</div>');
     else {
@@ -27,16 +28,49 @@ function sendNote() {
       }
 
       //Creazione testo da inserire nella nota
-      var testo = "node\n" +
-        "\naddr:street=" + $("#strada").val() +
-        "\naddr:housenumber=" + $("#civico").val() +
-        "\naddr:city=" + $("#comune").val() +
-        "\naddr:postcode=" + $("#cap").val() +
-        "\n\n------ NOTE ------\n" + $("#note").val() +
-        "\n------------------\n\nQuesta nota è stata generata automaticamente dal tool di segnalazione di indirizzi.\n https://naposm.github.io/indirizzo/\n #AggiuntoIndirizzo";
+      // Inserisce node : lat, lon per Level0
+      var testo = "node : " + lat.toString().slice(0, 8) + ", " + lon.toString().slice(0, 8) +"\n\n";
+
+      // Inserisce piazza o strada a seconda di come viene scritto l' indirizzo
+      var regex = /^((piazz(etta|ale|ola|a)?)|isol(otto|a|e)?|corte|centro|palazzo|place)|(platz)\s*$/gim;
+      var streetname = $("#strada").val();
+      (regex.test(streetname)) ? testo += "addr:place=" : testo += "addr:street=";
+      testo += streetname;
+
+      // Controlla se ci sono lettere nel civico per aggiungerle separatamente
+      regex = /(\d+)([A-Za-z])/;
+      var housenumber = $("#civico").val();
+       if (regex.test(housenumber)) {
+         var hn_with_letter = $("#civico").val().match(regex);
+         testo += "\naddr:housenumber=" + hn_with_letter[1] +
+                  "\naddr:unit=" + hn_with_letter[2];
+       } else {
+         testo += "\naddr:housenumber=" + housenumber;
+       }
+
+        testo += "\naddr:city=" + $("#comune").val();
+
+        // Aggiunge il CAP se presente
+        if($("#cap").val() != "")
+          testo += "\naddr:postcode=" + $("#cap").val();
+
+
+
+      // Aggiunge le note se presenti
+      if ($("#note").val() != "") {
+        testo += "\n\n------ NOTE ------\n" + $("#note").val() +
+                  "\n------------------";
+      }
+
+      // Inserisce un avviso se manca il CAP
+      if (nopostcode && $("#cap").val() != ""){
+        testo += "\n\n[⚠️ ATTENZIONE: A questa città mancano i dati sull' indirizzo postale!]\nPer inserirlo andare nella relazione della città e inserire: \" postal_code:" + $("#cap").val() + " \" " ;
+      }
+
+      testo +=  "\n\nQuesta nota è stata generata automaticamente dal tool di segnalazione di indirizzi.\n https://naposm.github.io/indirizzo/\n #AggiuntoIndirizzo";
 
       if (distGPStoSelection != 0) {
-        testo = "[SELEZIONATO SU MAPPA (dist. " + distGPStoSelection + ")]\n" + testo;
+        testo = "[SELEZIONATO SU MAPPA (dist. " + distGPStoSelection + ")]\n\n" + testo;
       }
       // Invia i dati a osm
       // https://api.openstreetmap.org/api/0.6/notes?lat=51.00&lon=0.1&text=ThisIsANote

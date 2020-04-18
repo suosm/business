@@ -1,0 +1,16 @@
+ /* COLLABORATORI */
+   Creatore del progetto: Cascafico
+   Sito: http://cascafico.altervista.org/
+   Twitter: @cascafico
+
+   Collaboratore: naposm
+   Città di provenienza: Napoli, Italia
+
+ /* RINGRAZIAMENTI */
+   Un ringraziamento speciale a tutta la community di OpenStreetMap in Italia e nel mondo!
+
+ /* SITO */
+   Ultimo aggiornamento: 2020/04/18
+   Standard: HTML5, CSS3
+   Componenti: jQuery, Leaflet, Bootstrap, Animate.css
+   Software: GitHub Desktop, Atom, Firefox, XAMPP, Inkscape
