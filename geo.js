@@ -28,7 +28,7 @@ function getDataFromNominatim(lat, lon){
   } else {
     $('#cap').val("");
     // Inserisce avviso "Manca l' indirizzo postale"
-    $("#capMex").html('<div class="alert alert-warning small" role="alert"> ✉️ A quanto pare sul nostro database non abbiamo il CAP di questa città, probabilmente nessuno ce lo ha mai segnalato. 😓 Ci farebbe molto piacere conoscerlo! </div>');
+    $("#capMex").html('<div class="alert alert-warning small" role="alert"> ✉️ A quanto pare non abbiamo il CAP di questa città sul nostro database. 😓 Ci farebbe molto piacere che tu lo inserissi, così potremo inserirlo in questa città! </div>');
     nopostcode = true;
   }
  });
