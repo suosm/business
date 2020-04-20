@@ -3,13 +3,6 @@ var share_url = "https://naposm.github.io/indirizzo/";
 
 function sendNote() {
 
-        // Numero di note ricevute
-        var request = "https://api.openstreetmap.org/api/0.6/notes/search.json?q=AggiuntoIndirizzo&closed=-1";
-        $.getJSON( request, function( data ) {
-          $("#notes-count").html("Fino ad oggi abbiamo ricevuto ben <strong>" + Object.keys(data.features).length + "</strong> richieste di inserimento di indirizzi!");
-          }
-        );
-
   $('#form').submit(function(event) {
     event.preventDefault();
 
