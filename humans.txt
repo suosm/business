@@ -6,8 +6,15 @@
    Collaboratore: naposm
    Città di provenienza: Napoli, Italia
 
- /* RINGRAZIAMENTI */
+ /* RINGRAZIAMENTI - SPECIAL THANKS */
+
    Un ringraziamento speciale a tutta la community di OpenStreetMap in Italia e nel mondo!
+
+   ---
+
+   Special thanks to jQuery, Leaflet, Bootstrap, Animate.css, 30 seconds of code for their big contributions
+   Special thanks to Stack Overflow and DuckDuckGo for their help in the difficulties
+   And a big, special thank you goes to the whole OpenStreetMap community!
 
  /* SITO */
    Ultimo aggiornamento: 2020/04/18
