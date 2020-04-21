@@ -186,7 +186,7 @@
       Nessuna posizione
     </span>
     <!-- LOCALIZE ME BUTTON -->
-    <button class="btn btn-primary w-100 mt-2" onclick="getLocation()" id="pos-button"><img src="position.svg" width="20" class="mr-2" alt="" id="pos-img">LOCALIZZAMI</button>
+    <button class="btn btn-primary w-100 mt-2" onclick="getLocation()" id="pos-button"><img src="position.svg" width="20" class="mr-2" alt="" id="pos-img" loading="lazy">LOCALIZZAMI</button>
     <!-- LOCALIZATION INFORMATION -->
     <div id="geo-information" class="mt-2">
       <div class="alert alert-dark  text-center" role="alert">
@@ -245,7 +245,7 @@
       </div>
 
       <!-- INVIO -->
-    <input value="Invia" type="submit" class="btn btn-success w-100 btn-lg mb-3">
+    <input value="Invia" type="submit" class="btn btn-success w-100 btn-lg mb-3" onclick="sendNote()">
     </form>
     <div id="sending-information"></div>
     <p class="font-weight-light small text-muted mt-4">Un progetto open source sviluppato dalla comunità di <a href="https://www.openstreetmap.org/" class="badge badge-info">OpenStreetMap</a> in Italia 🇮🇹. <a href="https://github.com/naposm/indirizzo"
@@ -262,7 +262,7 @@
   <section class="bg-dark p-4">
     <div class="container">
       <h2 class="text-center text-white mb-4 mt-5 h1" id="come-funziona">Cosa fa questo strumento? 🤨</h2>
-      <p class="text-white-50 text-center h3">Questo strumento crea una <img src="https://wiki.openstreetmap.org/w/images/d/d0/Open_note_marker.png" alt="" class="mx-auto d-inline-block" height="30"> nota su <strong>OpenStreetMap</strong> con i
+      <p class="text-white-50 text-center h3">Questo strumento crea una <img src="https://wiki.openstreetmap.org/w/images/d/d0/Open_note_marker.png" loading="lazy" alt="" class="mx-auto d-inline-block" height="30"> nota su <strong>OpenStreetMap</strong> con i
         dettagli dell' indirizzo che i volontari aggiungeranno poi alla mappa.<br><br>
         👻 La nota è <u class="text-danger">totalmente anonima</u>, quindi nessuno dei volontari saprà mai chi sei. <br><small>(tranne se ci scrivi tutto su di te... 🙄)</small><br><br>
         Attendi un paio di giorni e troverai il tuo indirizzo su <a href="https://www.openstreetmap.org" target="_black" rel="noopener" class="nodecoration">osm.org</a> e tantissime altre app! 🥳<br><br>
@@ -278,7 +278,7 @@
       </p>
       <a href="#aggiungi" class="btn btn-primary mx-auto d-block mt-4 btn-lg mb-4">AGGIUNGI UN INDIRIZZO</a>
       <hr>
-      <img src="https://wiki.openstreetmap.org/w/images/7/79/Public-images-osm_logo.svg" width="100" class="img-fluid mx-auto d-block" alt="Logo di OpenStreetMap">
+      <img src="https://wiki.openstreetmap.org/w/images/7/79/Public-images-osm_logo.svg" loading="lazy" width="100" class="img-fluid mx-auto d-block" alt="Logo di OpenStreetMap">
       <h2 class="text-center text-white mb-4 h1" id="openstreetmap">Cos'è <strong>OpenStreetMap</strong>? 🤔</h2>
 
       <p class="text-white-50 text-center h3"><strong>OpenStreetMap</strong> è un database geografico aperto. 👐<br><br>
@@ -341,15 +341,11 @@
 
     // Esri world Imagery tiles edited from http://bl.ocks.org/d3noob/8663620
     mapLink =
-      'Imagery by <a href="http://www.esri.com/"><img class="source-image" width="15" src="https://osmlab.github.io/editor-layer-index/sources/world/EsriImageryClarity.png"> Esri</a> - <a href="https://wiki.openstreetmap.org/wiki/Esri">Termini e condizioni</a>';
+      'Imagery by <a href="http://www.esri.com/"><img alt="" width="15" loading="lazy" src="https://osmlab.github.io/editor-layer-index/sources/world/EsriImageryClarity.png"> Esri</a> - <a href="https://wiki.openstreetmap.org/wiki/Esri">Termini e condizioni</a>';
     L.tileLayer(
       'https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
         attribution: '&copy; ' + mapLink,
       }).addTo(map);
-
-
-          // FORM CHECKER STARTER
-            sendNote();
 
             // Numero di note ricevute
             var request = "https://api.openstreetmap.org/api/0.6/notes/search.json?q=AggiuntoIndirizzo&closed=-1";
@@ -358,6 +354,8 @@
               }
             );
   </script>
+  <!-- CONFETTI JS - https://github.com/mathusummut/confetti.js -->
+  <script src="https://cdn.jsdelivr.net/gh/mathusummut/confetti.js/confetti.min.js"></script>
 </body>
 
 </html>
