@@ -348,7 +348,7 @@
             // Numero di note ricevute
             var request = "https://api.openstreetmap.org/api/0.6/notes/search.json?q=AggiuntoIndirizzo&closed=-1";
             $.getJSON( request, function( data ) {
-              $("#notes-count").html("Fino ad oggi abbiamo ricevuto ben <strong>" + Object.keys(data.features).length + "</strong> richieste di inserimento di indirizzi!");
+              $("#notes-count").html("Fino ad oggi abbiamo ricevuto ben <strong class=\"text-danger\">" + Object.keys(data.features).length + "</strong> richieste di inserimento di indirizzi!");
               }
             );
   </script>
