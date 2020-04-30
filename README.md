@@ -1,6 +1,6 @@
 # Indirizzo
 
-An internet form for mobile devices you can use to add geolocated Openstreetmap notes.
+An [internet form](https://suosm.github.io/business/) for mobile devices you can use to add geolocated Openstreetmap notes about commercial activities.
 
 ## Notes type
 
