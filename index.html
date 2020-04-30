@@ -200,7 +200,7 @@
         <!-- NOME DEL CODICE ATECO ACCETTA COME PATTERN UNA REGEX CON CIFRE E PUNTI-->
         <div class="form-group col">
           <label for="ateco">Codice ATECO</label> <span class="badge badge-danger">Necessario</span>
-          <input type="text" pattern="\d{2}[.]{1}\d{2}[.]{1}[0-9A-Za-z]{1}" class="form-control" name="ateco" id="ateco" aria-describedby="atecoHint" placeholder="es. 56.30.00" required>
+          <input type="text" pattern="d{2}+(.d)?" class="form-control" name="ateco" id="ateco" aria-describedby="atecoHint" placeholder="es. 56.30.00" required>
           <small id="atecoHint" class="form-text text-muted">Inserisci il codice ATECO dell'esercizio.</small>
 
           <div class="alert alert-primary small" role="alert" id="atecoMex">
@@ -208,7 +208,7 @@
           </div>
         </div>
 
-        <!-- NOME DELLA STRADA ACCETTA COME PATTERN UNA REGEX CON LETERE LATINE, NUMERI (ANCHE ROMANI), TRATTINI, PUNTI E LETTERE FRANCESI E TEDESCHE (PER I PAESI AL CONFINE) PER EVITARE NOMI NON CORRETTI-->
+        <!-- NOME DELLA STRADA ACCETTA COME PATTERN UNA REGEX CON LETTERE LATINE, NUMERI (ANCHE ROMANI), TRATTINI, PUNTI E LETTERE FRANCESI E TEDESCHE (PER I PAESI AL CONFINE) PER EVITARE NOMI NON CORRETTI-->
         <div class="form-group col">
           <label for="strada">Nome della strada</label> <span class="badge badge-light">Facoltativo</span>
           <input type="text" pattern="[A-Za-z0-9IVXLCDMßÜüÖöÄäàâçæéèêëïîôœùûüÿÀÂÇÆÉÈÊËÏÎÔŒÙÛÜŸ\-\. '°/]+" class="form-control" name="strada" id="strada" aria-describedby="stradaHint" placeholder="es. Via Roma" required>
