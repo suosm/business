@@ -197,6 +197,17 @@
     <h2 class="h3">2. Inserisci i dettagli</h2>
     <form class="mt-4" id="form">
       <div class="form-row">
+        <!-- NOME DEL CODICE ATECO ACCETTA COME PATTERN UNA REGEX CON LETERE LATINE, NUMERI (ANCHE ROMANI), TRATTINI, PUNTI E LETTERE FRANCESI E TEDESCHE (PER I PAESI AL CONFINE) PER EVITARE NOMI NON CORRETTI-->
+        <div class="form-group col">
+          <label for="ateco">Codice ATECO</label> <span class="badge badge-danger">Necessario</span>
+          <input type="text" pattern="[0-9\.]+" class="form-control" name="ateco" id="ateco" aria-describedby="atecoHint" placeholder="es. 56.30.00" required>
+          <small id="atecoHint" class="form-text text-muted">Inserisci il codice ATECO dell'esercizio.</small>
+
+          <div class="alert alert-primary small" role="alert" id="atecoMex">
+            📜 Inserisci il codice dell'esercizio<br>Sono consentiti soltanto numeri e il separatore ".".
+          </div>
+        </div>
+
         <!-- NOME DELLA STRADA ACCETTA COME PATTERN UNA REGEX CON LETERE LATINE, NUMERI (ANCHE ROMANI), TRATTINI, PUNTI E LETTERE FRANCESI E TEDESCHE (PER I PAESI AL CONFINE) PER EVITARE NOMI NON CORRETTI-->
         <div class="form-group col">
           <label for="strada">Nome della strada</label> <span class="badge badge-light">Facoltativo</span>
