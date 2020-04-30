@@ -199,9 +199,9 @@
       <div class="form-row">
         <!-- NOME DELLA STRADA ACCETTA COME PATTERN UNA REGEX CON LETERE LATINE, NUMERI (ANCHE ROMANI), TRATTINI, PUNTI E LETTERE FRANCESI E TEDESCHE (PER I PAESI AL CONFINE) PER EVITARE NOMI NON CORRETTI-->
         <div class="form-group col">
-          <label for="strada">Nome della strada</label> <span class="badge badge-danger">Necessario</span>
+          <label for="strada">Nome della strada</label> <span class="badge badge-light">Facoltativo</span>
           <input type="text" pattern="[A-Za-z0-9IVXLCDMßÜüÖöÄäàâçæéèêëïîôœùûüÿÀÂÇÆÉÈÊËÏÎÔŒÙÛÜŸ\-\. '°/]+" class="form-control" name="strada" id="strada" aria-describedby="stradaHint" placeholder="es. Via Roma" required>
-          <small id="stradaHint" class="form-text text-muted">Inserisci il nome della strada in cui si trova l' edificio, senza civico.</small>
+          <small id="stradaHint" class="form-text text-muted">Inserisci il nome della strada in cui si trova l'esercizio, senza civico.</small>
 
           <div class="alert alert-primary small" role="alert" id="stradaMex">
             📜 Inserisci il nome completo della strada, senza abbreviazioni.<br>Sono consentiti soltanto caratteri latini con lettere francesi e tedesche, numeri e alcuni simboli.
@@ -209,7 +209,7 @@
         </div>
         <!-- NUMERO CIVICO ACCETTA LETTERE E NUMERI (ANCHE ROMANI) -->
         <div class="form-group col-md-5">
-          <label for="civico">Numero civico</label> <span class="badge badge-danger">Necessario</span>
+          <label for="civico">Numero civico</label> <span class="badge badge-light">Facoltativo</span>
           <input type="text" pattern="[A-Za-z0-9IVXLCDM]+" class="form-control" name="civico" id="civico" placeholder="es. 11 o 11a" aria-describedby="civicoHint" required>
           <small id="civicoHint" class="form-text text-muted">Inserisci il numero civico (anche con lettera).</small>
           <div class="alert alert-primary small" role="alert">
@@ -220,7 +220,7 @@
       <div class="form-row">
         <div class="form-group col-md-6">
           <!-- COMUNE ACCETTA LETTERE E PARENTESI TONDE, DA ALCUNI CELLULARI L' AUTOCOMPLETAMENTO PROVA A SUGGERIRE L' INDIRIZZO -->
-          <label for="comune">Comune</label> <span class="badge badge-danger">Necessario</span>
+          <label for="comune">Comune</label> <span class="badge badge-light">Facoltativo</span>
           <input type="text" pattern="[A-Za-zßÜüÖöÄäàâçæéèêëïîôœùûüÿÀÂÇÆÉÈÊËÏÎÔŒÙÛÜŸ\-\. '/]+" class="form-control" name="comune" id="comune" placeholder="es. Pietrelcina" autocomplete="address-level2" aria-describedby="stradaHint" required>
           <small id="civicoHint" class="form-text text-muted">Inserisci il comune in cui si trova la strada, senza provincia.</small>
           <div class="alert alert-primary small" role="alert">
